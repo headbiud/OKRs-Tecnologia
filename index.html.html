@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKRs Tecnologia 2026 — BIUD Governança</title>
+<style>
+  :root{
+    --bg:#F2F3F5; --surface:#FFFFFF; --ink:#191A1E; --muted:#646B78; --line:#E3E5E9;
+    --brand:#E10A8B; --brand-ink:#9C0660;
+    --st-nao:#7C8698; --st-and:#2563EB; --st-ate:#D97706; --st-atr:#DC2626; --st-con:#0E9F6E;
+    --st-nao-bg:#EEF0F3; --st-and-bg:#E7EEFD; --st-ate-bg:#FCF1E0; --st-atr-bg:#FCE8E8; --st-con-bg:#E2F5EE;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --radius:10px; --shadow:0 1px 2px rgba(20,22,28,.05),0 4px 14px rgba(20,22,28,.05);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  button{font-family:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:7px;padding:5px 10px}
+  button:hover{border-color:#C8CCD4}
+  button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+  button.primary{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+  button.primary:hover{background:var(--brand-ink);border-color:var(--brand-ink)}
+  button.ghost{border-color:transparent;background:transparent;color:var(--muted)}
+  button.ghost:hover{color:var(--ink);background:#EEF0F3}
+  button.danger{color:var(--st-atr)}
+  input[type=text],input[type=password],input[type=date],select,textarea{font-family:inherit;font-size:13px;border:1px solid var(--line);border-radius:7px;padding:6px 8px;background:#fff;color:var(--ink)}
+  input[type=date]{font-family:var(--mono);font-size:12px}
+  textarea{width:100%;resize:vertical;min-height:64px}
+  .mono{font-family:var(--mono);font-size:12px}
+  a{color:var(--brand-ink)}
+
+  /* ===== Auth ===== */
+  .auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .auth-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);max-width:420px;width:100%;padding:26px}
+  .auth-card h2{margin:6px 0 2px;font-size:18px;letter-spacing:-.01em}
+  .auth-card .sub{font-size:12.5px;color:var(--muted)}
+  .auth-card .fld{margin-top:14px}
+  .auth-card input{width:100%}
+  .auth-err{margin-top:10px;font-size:12.5px;color:var(--st-atr);background:var(--st-atr-bg);border-radius:7px;padding:7px 9px}
+  .auth-info{margin-top:10px;font-size:12px;color:var(--muted)}
+  .auth-actions{margin-top:18px;display:flex;justify-content:flex-end;gap:8px}
+  .auth-actions .primary{padding:7px 16px}
+  .role-pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;border-radius:99px;padding:3px 10px}
+  .role-admin{color:var(--brand-ink);background:#FBE2F1}
+  .role-viewer{color:var(--st-and);background:var(--st-and-bg)}
+
+  /* ===== Header ===== */
+  header{background:var(--surface);border-bottom:1px solid var(--line)}
+  .head-in{max-width:1080px;margin:0 auto;padding:18px 20px 14px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between}
+  .eyebrow{color:var(--brand);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  h1{margin:2px 0 0;font-size:21px;letter-spacing:-.01em}
+  .head-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .save-pill{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:#FAFAFB}
+  .save-pill.ok{color:var(--st-con);border-color:#BFE6D8}
+  .save-pill.warn{color:var(--st-ate);border-color:#EBD3A8;background:var(--st-ate-bg)}
+
+  .publish-banner{max-width:1080px;margin:12px auto 0;padding:9px 14px;background:var(--st-ate-bg);color:#8a5a10;border:1px solid #EBD3A8;border-radius:9px;font-size:12.5px;display:none}
+  .publish-banner b{font-weight:700}
+
+  /* ===== Summary / status rail ===== */
+  .rail-wrap{max-width:1080px;margin:18px auto 0;padding:0 20px}
+  .progress-line{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .progress-line strong{font-family:var(--mono);font-size:13px}
+  .bar{flex:1;min-width:160px;height:6px;background:#E6E8EC;border-radius:99px;overflow:hidden}
+  .bar > div{height:100%;background:var(--st-con);border-radius:99px;transition:width .3s}
+  .rail{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px 8px;text-align:left;position:relative}
+  .tile .n{font-family:var(--mono);font-size:24px;font-weight:700;line-height:1}
+  .tile .l{font-size:11px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
+  .tile::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--tc)}
+  .tile.active{border-color:var(--tc);box-shadow:inset 0 0 0 1px var(--tc)}
+  .tile.active .n{color:var(--tc)}
+  details.legend{margin-top:10px;color:var(--muted);font-size:12px}
+  details.legend summary{cursor:pointer;width:max-content}
+  details.legend li{margin:3px 0}
+
+  /* ===== Filters ===== */
+  .filters{position:sticky;top:0;z-index:30;background:var(--bg);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+  .filters-in{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tabs{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+  .tabs button{border:0;border-radius:0;padding:6px 12px;background:#fff;color:var(--muted)}
+  .tabs button.on{background:var(--ink);color:#fff}
+  .filters input[type=text]{flex:1;min-width:140px}
+
+  /* ===== Sections / KR cards ===== */
+  main{max-width:1080px;margin:0 auto;padding:18px 20px 80px}
+  .obj{margin-top:26px}
+  .obj-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+  .obj-code{font-family:var(--mono);font-weight:700;color:var(--brand);font-size:13px}
+  .obj-title{font-size:16px;font-weight:700;letter-spacing:-.01em}
+  .obj-owner{font-size:12px;color:var(--muted)}
+  .kr{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:12px 0;overflow:hidden}
+  .kr-head{padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+  .kr-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .kr-title{font-weight:650;font-size:14.5px;max-width:680px}
+  .kr-title .kid{font-family:var(--mono);color:var(--brand);font-weight:700;margin-right:6px;font-size:12.5px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .chip{font-size:11px;border:1px solid var(--line);border-radius:99px;padding:2px 9px;color:var(--muted);background:#FAFAFB;white-space:nowrap}
+  .chip.cad{border-style:dashed}
+  .kr-sub{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--muted)}
+  .kr-sub .mono{font-size:11.5px}
+  .dotline{display:flex;gap:8px;align-items:center}
+  .dot{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:11px}
+  .dot i{width:8px;height:8px;border-radius:99px;display:inline-block}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;border-radius:99px;padding:3px 10px;letter-spacing:.02em}
+  .badge i{width:7px;height:7px;border-radius:99px;background:currentColor;display:inline-block}
+  .b-nao{color:var(--st-nao);background:var(--st-nao-bg)} .b-and{color:var(--st-and);background:var(--st-and-bg)}
+  .b-ate{color:var(--st-ate);background:var(--st-ate-bg)} .b-atr{color:var(--st-atr);background:var(--st-atr-bg)}
+  .b-con{color:var(--st-con);background:var(--st-con-bg)}
+  .kr-result{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+  .metric{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .metric input{width:110px;font-family:var(--mono);font-size:12px;padding:4px 6px}
+  .metric .target{font-family:var(--mono);color:var(--ink);background:#F2F3F5;border-radius:6px;padding:4px 8px}
+  .metric .roval{font-family:var(--mono);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 8px;min-width:60px;display:inline-block;text-align:center}
+  .kr-desc{padding:0 16px}
+  .kr-desc details{padding:8px 0}
+  .kr-desc summary{cursor:pointer;font-size:12px;color:var(--muted)}
+  .kr-foot-note{font-size:11px;color:var(--muted)}
+  .ro-text{font-size:12.5px;white-space:pre-wrap;color:var(--ink)}
+  .ro-text.empty{color:var(--muted);font-style:italic}
+
+  /* ===== Activities ===== */
+  .acts{list-style:none;margin:0;padding:0}
+  .act{border-top:1px solid var(--line)}
+  .act-row{display:flex;gap:10px;align-items:center;padding:9px 16px 9px 12px;border-left:4px solid var(--sc,transparent)}
+  .act-row:hover{background:#FBFBFC}
+  .act-main{flex:1;min-width:200px}
+  .act-title{font-size:13.5px}
+  .act-title.done{color:var(--muted);text-decoration:line-through;text-decoration-color:#B9BEC8}
+  .act-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:2px}
+  .due{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .due b{font-weight:700}
+  .due.atr b{color:var(--st-atr)} .due.ate b{color:var(--st-ate)} .due.con b{color:var(--st-con)}
+  .ev-count{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .act-actions{display:flex;gap:6px;align-items:center}
+  .act-body{padding:6px 16px 16px 16px;background:#FBFBFC;border-top:1px dashed var(--line)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}.rail{grid-template-columns:repeat(2,1fr)}}
+  .fld{margin-top:10px}
+  .fld label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+  .inline{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .hint{font-size:11px;color:var(--muted)}
+  .ev-list{list-style:none;margin:6px 0 0;padding:0}
+  .ev-item{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 9px;margin-top:6px;font-size:12.5px}
+  .ev-item .tag{font-family:var(--mono);font-size:10px;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--muted);white-space:nowrap}
+  .ev-item .val{flex:1;word-break:break-word;white-space:pre-wrap}
+  .ev-item .when{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap}
+  .ev-form{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .ev-form textarea{flex:1;min-width:180px;min-height:38px}
+  .empty-note{padding:24px;text-align:center;color:var(--muted);font-size:13px}
+
+  /* ===== Modal ===== */
+  .overlay{position:fixed;inset:0;background:rgba(18,20,26,.45);display:flex;align-items:center;justify-content:center;z-index:90;padding:16px}
+  .modal{background:#fff;border-radius:12px;max-width:520px;width:100%;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
+  .modal h3{margin:0 0 4px;font-size:15px}
+  .modal .sub{font-size:12px;color:var(--muted)}
+  .modal .warn{font-size:12px;color:var(--st-ate);background:var(--st-ate-bg);border-radius:7px;padding:7px 9px;margin-top:8px}
+  .modal .req{font-size:12px;color:var(--st-atr)}
+  .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+  .modal ol{padding-left:18px;font-size:13px}
+  .modal ol li{margin:6px 0}
+
+  .footer-note{max-width:1080px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:11.5px}
+  #app{display:none}
+  @media print{.filters,.act-actions,button{display:none!important}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div id="authRoot"></div>
+
+<div id="app">
+<header>
+  <div class="head-in">
+    <div>
+      <div class="eyebrow">BIUD — Governança 2026</div>
+      <h1>OKRs Tecnologia · Painel de Controle</h1>
+    </div>
+    <div class="head-meta" id="headMeta"></div>
+  </div>
+</header>
+
+<div id="publishBanner" class="publish-banner">
+  <b>Alterações ainda não publicadas.</b> Para o time ver suas atualizações: clique em <b>Publicar dados</b>, baixe o <span class="mono">dados.json</span> e faça upload dele no repositório do GitHub (Add file → Upload files), substituindo o anterior.
+</div>
+
+<div class="rail-wrap">
+  <div class="progress-line">
+    <strong id="progTxt">0/0</strong>
+    <span class="hint">atividades concluídas</span>
+    <div class="bar"><div id="progBar" style="width:0%"></div></div>
+    <span class="mono" id="todayTxt"></span>
+  </div>
+  <div class="rail" id="rail"></div>
+  <details class="legend">
+    <summary>Regras de status (calculadas automaticamente — ninguém escolhe cor de farol)</summary>
+    <ul>
+      <li><b>Não iniciado</b> — sem registro de início e a mais de 15 dias do prazo.</li>
+      <li><b>Em andamento</b> — iniciada, não concluída, a mais de 15 dias do prazo.</li>
+      <li><b>Atenção</b> — não concluída e a 15 dias ou menos do prazo. Inclui atividades não iniciadas: não ter começado perto do prazo é pior, não melhor.</li>
+      <li><b>Atrasada</b> — não concluída com prazo vencido (iniciada ou não).</li>
+      <li><b>Concluída</b> — finalizada com evidência registrada. Sem evidência, não conclui.</li>
+    </ul>
+  </details>
+</div>
+
+<div class="filters">
+  <div class="filters-in">
+    <div class="tabs" id="objTabs">
+      <button data-obj="all" class="on">Todos</button>
+      <button data-obj="O1">TEC-O1</button>
+      <button data-obj="O2">TEC-O2</button>
+    </div>
+    <select id="cadSel"><option value="all">Todas as cadeiras</option></select>
+    <input type="text" id="searchBox" placeholder="Buscar atividade ou KR…">
+    <button class="ghost" id="clearFilters" style="display:none">Limpar filtros</button>
+  </div>
+</div>
+
+<main id="main"></main>
+
+<div class="footer-note" id="footerNote">
+  Fonte: OKRs_Tecnologia — BIUD Governança 2026. Status derivado das datas registradas; prazos de atividade herdam o KR quando não definidos.
+</div>
+
+<div id="modalRoot"></div>
+</div>
+
+<input type="file" id="importFile" accept="application/json" style="display:none">
+
+<script>
+"use strict";
+/* ================= util ================= */
+const $=(s,el=document)=>el.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const escAttr=esc;
+const pad=n=>String(n).padStart(2,"0");
+function todayISO(){const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
+function parseISO(iso){if(!iso)return null;const[y,m,d]=iso.split("-").map(Number);return new Date(y,m-1,d);}
+function fmtBR(iso){if(!iso)return"—";const[y,m,d]=iso.split("-");return d+"/"+m+"/"+y;}
+function fmtDT(iso){if(!iso)return"—";const d=new Date(iso);return pad(d.getDate())+"/"+pad(d.getMonth()+1)+"/"+d.getFullYear()+" "+pad(d.getHours())+":"+pad(d.getMinutes());}
+function daysUntil(iso){const t=parseISO(todayISO()),d=parseISO(iso);if(!d)return null;return Math.round((d-t)/864e5);}
+function norm(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
+async function shaHex(t){
+  const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("biud-okr-2026::"+t));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+
+/* ================= seed ================= */
+function seed(){return{
+ version:1,lastUpdated:null,auth:null,
+ objectives:[
+  {id:"O1",code:"TEC-O1",title:"Garantir previsibilidade, qualidade e velocidade das entregas",owner:"Gustavo (Head Tecnologia)",krs:[
+   {id:"O1K1",n:"KR1",title:"Manter desvio de sprint abaixo de 20% a partir de mai/2026",cadeira:"Head Tech + PM",
+    deadline:"2026-05-31",deadlineLabel:"vigente a partir de",continuous:true,
+    metricTarget:"< 20% de desvio",baselineNote:"",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O1K1A1",title:"Criar e documentar playbook interno de engenharia"},
+     {id:"O1K1A2",title:"Padronizar ciclo de desenvolvimento e conceito de pronto"},
+     {id:"O1K1A3",title:"Identificar e publicar capacidade real do time"}]},
+   {id:"O1K2",n:"KR2",title:"Reduzir lead time (ideia → produção) em pelo menos 25% até set/2026",cadeira:"Head Tech",
+    deadline:"2026-09-30",deadlineLabel:"até",continuous:false,
+    metricTarget:"−25% vs baseline",baselineNote:"Δ baseline medida até 27/mar",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O1K2A1",title:"Mapear gargalos no fluxo de desenvolvimento"},
+     {id:"O1K2A2",title:"Implementar projeto de IA First para melhoria da qualidade de desenvolvimento"},
+     {id:"O1K2A3",title:"Criar métrica de tokens de IA para medir ganho de velocidade"}]},
+   {id:"O1K3",n:"KR3",title:"Reduzir bugs em produção em pelo menos 35% até out/2026",cadeira:"Head Tech + QA",
+    deadline:"2026-10-31",deadlineLabel:"até",continuous:false,
+    metricTarget:"−35% vs baseline",baselineNote:"Δ baseline medida até 27/mar",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O1K3A1",title:"Padronizar critérios de teste baseados em regras de negócio com IA"},
+     {id:"O1K3A2",title:"Implementar esteira de qualidade automatizada"},
+     {id:"O1K3A3",title:"Implementar testes automatizados nas principais jornadas"}]},
+   {id:"O1K4",n:"KR4",title:"Ter painel de indicadores ágeis ativo e atualizado semanalmente até jun/2026",cadeira:"PM (Lucas)",
+    deadline:"2026-06-30",deadlineLabel:"até",continuous:false,
+    metricTarget:"Dashboard ativo + atualização semanal",baselineNote:"",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O1K4A1",title:"Automatizar extração de dados do ClickUp/Jira"},
+     {id:"O1K4A2",title:"Centralizar informações de andamento de Tecnologia"},
+     {id:"O1K4A3",title:"Construir dashboards consumidos diretamente do banco de dados"}]},
+   {id:"O1K5",n:"KR5",title:"100% do time treinado e utilizando IA no ciclo de desenvolvimento",cadeira:"Head Tech",
+    deadline:"2026-05-31",deadlineLabel:"até",continuous:false,
+    metricTarget:"100% do time",baselineNote:"Documento diverge: título diz jun/26, meta diz mai/26 — adotado mai/26 (edite o prazo se a data oficial for jun)",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O1K5A1",title:"Realizar workshops internos de IA por área"},
+     {id:"O1K5A2",title:"Compartilhar metodologias e melhores práticas entre o time"},
+     {id:"O1K5A3",title:"Criar guia de ferramenta ideal para cada etapa do ciclo de desenvolvimento"},
+     {id:"O1K5A4",title:"Implementar TecWeek — apresentações internas de tecnologia"}]}
+  ]},
+  {id:"O2",code:"TEC-O2",title:"Garantir integridade, segurança e performance da plataforma",owner:"Gustavo (Head Tecnologia)",krs:[
+   {id:"O2K1",n:"KR1",title:"Manter disponibilidade da plataforma acima de 99,5% a partir de jun/2026",cadeira:"Head Tech + DevOps",
+    deadline:"2026-06-30",deadlineLabel:"vigente a partir de",continuous:true,
+    metricTarget:"≥ 99,5% uptime",baselineNote:"",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O2K1A1",title:"Garantir confiabilidade dos dados nas 3 esferas (interno, Sebrae, MPEs)"},
+     {id:"O2K1A2",title:"Implementar monitoramento de infra com alertas automatizados"},
+     {id:"O2K1A3",title:"Externalizar informações de infraestrutura para visibilidade"}]},
+   {id:"O2K2",n:"KR2",title:"Manter zero vulnerabilidades críticas não corrigidas durante o ano",cadeira:"Head Tech + InfoSec",
+    deadline:"2026-12-31",deadlineLabel:"vigência durante todo o ano, até",continuous:true,
+    metricTarget:"0 críticas abertas",baselineNote:"",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O2K2A1",title:"Implementar conceito de Privacy by Design"},
+     {id:"O2K2A2",title:"Criar frente de LGPD com regras de segurança"},
+     {id:"O2K2A3",title:"Documentar playbook de segurança com matriz de decisão"},
+     {id:"O2K2A4",title:"Executar testes sazonais de performance e segurança"}]},
+   {id:"O2K3",n:"KR3",title:"Ter protocolo formal de gestão de incidentes documentado e ativo até mai/2026",cadeira:"Head Tech",
+    deadline:"2026-05-31",deadlineLabel:"até",continuous:false,
+    metricTarget:"Protocolo ativo",baselineNote:"",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O2K3A1",title:"Definir fluxo de escalonamento por severidade"},
+     {id:"O2K3A2",title:"Documentar SLA interno por tipo de incidente"},
+     {id:"O2K3A3",title:"Implementar post-mortem obrigatório para incidentes P0/P1"}]},
+   {id:"O2K4",n:"KR4",title:"Reduzir tempo de carregamento das páginas críticas para menos de 2 segundos até ago/2026",cadeira:"DevOps (Guilherme Lima)",
+    deadline:"2026-08-31",deadlineLabel:"até",continuous:false,
+    metricTarget:"< 2s nas páginas críticas",baselineNote:"",metricBaseline:"",metricCurrent:"",compliance:"sem",
+    concludedAt:null,description:"",evidences:[],acts:[
+     {id:"O2K4A1",title:"Executar otimização de performance frontend"},
+     {id:"O2K4A2",title:"Implementar monitoramento de latência (Up Time Kuma/DataDog)"},
+     {id:"O2K4A3",title:"Definir budget de performance por página crítica"}]}
+  ]}
+ ]};}
+function hydrate(st){st.auth=st.auth??null;st.objectives.forEach(o=>o.krs.forEach(k=>{k.evidences=k.evidences||[];k.acts.forEach(a=>{a.deadline=a.deadline??null;a.startedAt=a.startedAt??null;a.concludedAt=a.concludedAt??null;a.description=a.description??"";a.evidences=a.evidences||[];});}));return st;}
+
+/* ================= estado (estático: dados.json no repositório) ================= */
+let state=null, dirty=false;
+let role=null; // 'admin' | 'viewer'
+const isAdmin=()=>role==="admin";
+const ui={obj:"all",cad:"all",q:"",statuses:new Set(),open:new Set()};
+
+async function fetchRemote(){
+  try{
+    const r=await fetch("dados.json?ts="+Date.now(),{cache:"no-store"});
+    if(!r.ok)return null;
+    const data=await r.json();
+    if(!data||!Array.isArray(data.objectives))return null;
+    return hydrate(data);
+  }catch(e){return null;}
+}
+function markDirty(){
+  dirty=true;
+  setPill("warn","não publicado");
+  $("#publishBanner").style.display="block";
+}
+function clearDirty(){
+  dirty=false;
+  setPill("ok","sincronizado com o publicado");
+  $("#publishBanner").style.display="none";
+}
+function setPill(cls,txt){const p=$("#savePill");if(!p)return;p.className="save-pill "+cls;p.textContent=txt;}
+window.addEventListener("beforeunload",e=>{if(isAdmin()&&dirty){e.preventDefault();e.returnValue="";}});
+
+/* ================= autenticação (hashes guardadas no dados.json) ================= */
+function authScreen(html){$("#authRoot").innerHTML=`<div class="auth-wrap"><div class="auth-card">${html}</div></div>`;}
+function authErr(msg){const e=$("#authErr");if(e){e.textContent=msg;e.style.display="block";}}
+
+function renderSetup(){
+  authScreen(`
+    <div class="eyebrow">BIUD — Governança 2026</div>
+    <h2>Configuração inicial do painel</h2>
+    <div class="sub">Ainda não existe um <span class="mono">dados.json</span> publicado com senhas. Defina as duas senhas: a de <b>administrador</b> permite editar; a de <b>visualizador</b> dá acesso somente leitura. Depois de entrar, use <b>Publicar dados</b> e suba o arquivo no GitHub para ativar o acesso do time.</div>
+    <div class="fld"><label>Senha do administrador</label><input type="password" id="suA" autocomplete="off"></div>
+    <div class="fld"><label>Confirmar senha do administrador</label><input type="password" id="suA2" autocomplete="off"></div>
+    <div class="fld"><label>Senha dos visualizadores</label><input type="password" id="suV" autocomplete="off"></div>
+    <div class="fld"><label>Confirmar senha dos visualizadores</label><input type="password" id="suV2" autocomplete="off"></div>
+    <div class="auth-err" id="authErr" style="display:none"></div>
+    <div class="auth-info">As senhas viram hash dentro do <span class="mono">dados.json</span> público. Isso organiza o acesso, mas não é sigilo de nível corporativo — não reutilize senhas de outros sistemas e não registre dados confidenciais no painel.</div>
+    <div class="auth-actions"><button class="primary" id="suGo">Definir senhas e entrar como administrador</button></div>
+  `);
+  $("#suGo").addEventListener("click",async()=>{
+    const a=$("#suA").value,a2=$("#suA2").value,v=$("#suV").value,v2=$("#suV2").value;
+    if(a.length<4||v.length<4)return authErr("Use senhas com pelo menos 4 caracteres.");
+    if(a!==a2)return authErr("A confirmação da senha de administrador não confere.");
+    if(v!==v2)return authErr("A confirmação da senha de visualizador não confere.");
+    if(a===v)return authErr("As duas senhas precisam ser diferentes — é por elas que o painel distingue quem edita de quem só visualiza.");
+    state.auth={a:await shaHex(a),v:await shaHex(v)};
+    role="admin";enterApp();markDirty();
+  });
+}
+function renderLogin(){
+  authScreen(`
+    <div class="eyebrow">BIUD — Governança 2026</div>
+    <h2>OKRs Tecnologia · Painel de Controle</h2>
+    <div class="sub">Informe a senha de acesso. O painel identifica automaticamente se você é administrador ou visualizador.</div>
+    <div class="fld"><label>Senha</label><input type="password" id="lgPwd" autocomplete="off"></div>
+    <div class="auth-err" id="authErr" style="display:none"></div>
+    <div class="auth-actions"><button class="primary" id="lgGo">Entrar</button></div>
+  `);
+  const go=async()=>{
+    const h=await shaHex($("#lgPwd").value);
+    if(h===state.auth.a){role="admin";enterApp();}
+    else if(h===state.auth.v){role="viewer";enterApp();}
+    else authErr("Senha incorreta.");
+  };
+  $("#lgGo").addEventListener("click",go);
+  $("#lgPwd").addEventListener("keydown",e=>{if(e.key==="Enter")go();});
+  $("#lgPwd").focus();
+}
+async function startAuth(){
+  authScreen(`<div class="eyebrow">BIUD — Governança 2026</div><h2>Carregando…</h2><div class="sub">Buscando dados publicados.</div>`);
+  const remote=await fetchRemote();
+  state=remote||hydrate(seed());
+  if(state.auth&&state.auth.a&&state.auth.v)renderLogin();
+  else renderSetup();
+}
+async function logout(){
+  if(isAdmin()&&dirty&&!confirm("Você tem alterações não publicadas. Sair mesmo assim? (elas serão perdidas se você não exportou o dados.json)"))return;
+  role=null;ui.open.clear();
+  $("#app").style.display="none";
+  await startAuth();
+}
+function enterApp(){
+  $("#authRoot").innerHTML="";
+  renderHeadMeta();
+  if(isAdmin()){if(!dirty)clearDirty();}
+  const fn=$("#footerNote");
+  fn.innerHTML=`Fonte: OKRs_Tecnologia — BIUD Governança 2026. Status derivado das datas registradas; prazos de atividade herdam o KR quando não definidos.${state.lastUpdated?` · Última publicação dos dados: <b>${fmtDT(state.lastUpdated)}</b>`:""}`;
+  $("#app").style.display="block";
+  render();
+}
+function renderHeadMeta(){
+  const pill=isAdmin()
+    ?`<span class="role-pill role-admin">ADMINISTRADOR</span>`
+    :`<span class="role-pill role-viewer">VISUALIZADOR</span>`;
+  $("#headMeta").innerHTML=isAdmin()
+    ?`${pill}
+      <span class="save-pill" id="savePill">—</span>
+      <button class="primary" data-action="publish" title="Baixar dados.json para subir no GitHub">Publicar dados</button>
+      <button class="ghost" data-action="import" title="Carregar um dados.json local para continuar editando">Importar</button>
+      <button class="ghost" data-action="passwords" title="Alterar senhas de acesso">Senhas</button>
+      <button class="ghost danger" data-action="reset" title="Apagar tudo e voltar ao documento original">Resetar</button>
+      <button data-action="logout">Sair</button>`
+    :`${pill}
+      <span class="save-pill" id="savePill">somente leitura</span>
+      <button data-action="refresh" title="Recarregar dados publicados">Atualizar</button>
+      <button data-action="logout">Sair</button>`;
+}
+
+/* ================= modelo de status ================= */
+const ST={nao:{k:"nao",label:"Não iniciado",c:"var(--st-nao)",b:"b-nao"},
+          and:{k:"and",label:"Em andamento",c:"var(--st-and)",b:"b-and"},
+          ate:{k:"ate",label:"Atenção",c:"var(--st-ate)",b:"b-ate"},
+          atr:{k:"atr",label:"Atrasada",c:"var(--st-atr)",b:"b-atr"},
+          con:{k:"con",label:"Concluída",c:"var(--st-con)",b:"b-con"}};
+const SEV=["atr","ate","and","nao"];
+function effDeadline(a,kr){return a.deadline||kr.deadline;}
+function actStatus(a,kr){
+  if(a.concludedAt)return ST.con;
+  const d=daysUntil(effDeadline(a,kr));
+  if(d===null)return a.startedAt?ST.and:ST.nao;
+  if(d<0)return ST.atr;
+  if(d<=15)return ST.ate;
+  return a.startedAt?ST.and:ST.nao;
+}
+function krCounts(kr){const c={nao:0,and:0,ate:0,atr:0,con:0};kr.acts.forEach(a=>c[actStatus(a,kr).k]++);return c;}
+function findKr(id){for(const o of state.objectives)for(const k of o.krs)if(k.id===id)return{o,k};return null;}
+function findAct(id){for(const o of state.objectives)for(const k of o.krs)for(const a of k.acts)if(a.id===id)return{o,k,a};return null;}
+
+/* ================= render ================= */
+function roText(v,emptyLabel){return v&&String(v).trim()?`<div class="ro-text">${esc(v)}</div>`:`<div class="ro-text empty">${esc(emptyLabel||"—")}</div>`;}
+function dueChip(a,kr){
+  if(a.concludedAt)return `<span class="due con">concluída em <b>${fmtBR(a.concludedAt)}</b></span>`;
+  const dl=effDeadline(a,kr),d=daysUntil(dl);
+  if(d===null)return `<span class="due">sem prazo</span>`;
+  const inh=a.deadline?"":" · herdado do KR";
+  if(d<0)return `<span class="due atr">prazo ${fmtBR(dl)}${inh} · <b>${-d}d de atraso</b></span>`;
+  if(d<=15)return `<span class="due ate">prazo ${fmtBR(dl)}${inh} · <b>${d}d restantes</b></span>`;
+  return `<span class="due">prazo ${fmtBR(dl)}${inh} · <b>${d}d restantes</b></span>`;
+}
+function evList(owner,kind){
+  if(!owner.evidences.length)return `<div class="hint" style="margin-top:6px">Nenhuma evidência registrada.</div>`;
+  return `<ul class="ev-list">`+owner.evidences.map((e,i)=>{
+    const val=e.type==="link"
+      ?`<a href="${escAttr(e.value)}" target="_blank" rel="noopener noreferrer">${esc(e.value)}</a>`
+      :esc(e.value);
+    const del=isAdmin()?`<button class="ghost danger" data-action="del-ev" data-kind="${kind}" data-id="${owner.id}" data-idx="${i}" title="Remover evidência">×</button>`:"";
+    return `<li class="ev-item"><span class="tag">${e.type==="link"?"LINK":"TEXTO"}</span><span class="val">${val}</span><span class="when">${fmtBR(e.addedAt)}</span>${del}</li>`;
+  }).join("")+`</ul>`;
+}
+function evForm(id,kind){
+  if(!isAdmin())return "";
+  return `<div class="ev-form">
+    <select id="evType-${id}"><option value="link">Link</option><option value="texto">Texto</option></select>
+    <textarea id="evVal-${id}" placeholder="Cole o link ou descreva a evidência"></textarea>
+    <button data-action="add-ev" data-kind="${kind}" data-id="${id}">Adicionar evidência</button>
+  </div>`;
+}
+function actRow(a,kr){
+  const st=actStatus(a,kr),open=ui.open.has(a.id);
+  let btn="";
+  if(isAdmin()){
+    btn=a.concludedAt
+      ?`<button data-action="reopen-act" data-id="${a.id}">Reabrir</button>`
+      :(a.startedAt
+        ?`<button class="primary" data-action="open-conclude" data-id="${a.id}">Concluir</button>`
+        :`<button data-action="start-act" data-id="${a.id}">Iniciar</button> <button class="primary" data-action="open-conclude" data-id="${a.id}">Concluir</button>`);
+  }
+  let body="";
+  if(open){
+    const left=isAdmin()
+      ?`<div class="fld"><label>Prazo da atividade</label>
+          <div class="inline">
+            <input type="date" value="${escAttr(a.deadline||kr.deadline||"")}" data-field="act-deadline" data-id="${a.id}">
+            ${a.deadline?`<button class="ghost" data-action="clear-deadline" data-id="${a.id}">Voltar a herdar do KR</button>`:`<span class="hint">herdado do KR (${fmtBR(kr.deadline)})</span>`}
+          </div>
+        </div>
+        <div class="fld"><label>Início</label>
+          <div class="inline">
+            <input type="date" value="${escAttr(a.startedAt||"")}" data-field="act-started" data-id="${a.id}">
+            ${a.startedAt?`<button class="ghost" data-action="clear-started" data-id="${a.id}">Limpar</button>`:`<span class="hint">sem registro</span>`}
+          </div>
+        </div>
+        ${a.concludedAt?`<div class="fld"><label>Conclusão</label><div class="inline"><input type="date" value="${escAttr(a.concludedAt)}" data-field="act-concluded" data-id="${a.id}"></div></div>`:""}
+        <div class="fld"><label>Descrição do processo</label>
+          <textarea data-field="act-desc" data-id="${a.id}" placeholder="Como esta atividade está sendo executada, decisões, links de contexto…">${esc(a.description)}</textarea>
+        </div>`
+      :`<div class="fld"><label>Prazo da atividade</label><div class="ro-text">${fmtBR(effDeadline(a,kr))}${a.deadline?"":" (herdado do KR)"}</div></div>
+        <div class="fld"><label>Início</label><div class="ro-text">${a.startedAt?fmtBR(a.startedAt):"sem registro"}</div></div>
+        ${a.concludedAt?`<div class="fld"><label>Conclusão</label><div class="ro-text">${fmtBR(a.concludedAt)}</div></div>`:""}
+        <div class="fld"><label>Descrição do processo</label>${roText(a.description,"Sem descrição registrada.")}</div>`;
+    body=`<div class="act-body">
+      <div class="grid2">
+        <div>${left}</div>
+        <div>
+          <div class="fld"><label>Evidências da entrega</label>
+            ${evList(a,"act")}
+            ${evForm(a.id,"act")}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+  return `<li class="act" style="--sc:${st.c}">
+    <div class="act-row">
+      <span class="badge ${st.b}" style="min-width:108px;justify-content:center"><i></i>${st.label}</span>
+      <div class="act-main">
+        <div class="act-title ${a.concludedAt?"done":""}">${esc(a.title)}</div>
+        <div class="act-meta">${dueChip(a,kr)}<span class="ev-count">${a.evidences.length} evidência${a.evidences.length===1?"":"s"}</span></div>
+      </div>
+      <div class="act-actions">${btn}<button class="ghost" data-action="toggle" data-id="${a.id}">${open?"Fechar":"Detalhes"}</button></div>
+    </div>
+    ${body}
+  </li>`;
+}
+function krResult(kr){
+  const compBadge={dentro:`<span class="badge b-con"><i></i>Dentro da meta</span>`,
+                   fora:`<span class="badge b-atr"><i></i>Fora da meta</span>`,
+                   sem:`<span class="badge b-nao"><i></i>Sem medição</span>`}[kr.compliance||"sem"];
+  const metric=isAdmin()
+    ?`<div class="metric">
+        ${kr.baselineNote?`<span class="hint">${esc(kr.baselineNote)} ·</span>`:""}
+        <span>Baseline</span><input type="text" value="${escAttr(kr.metricBaseline)}" placeholder="—" data-field="kr-baseline" data-id="${kr.id}">
+        <span>Atual</span><input type="text" value="${escAttr(kr.metricCurrent)}" placeholder="—" data-field="kr-current" data-id="${kr.id}">
+        <span>Meta</span><span class="target">${esc(kr.metricTarget)}</span>
+      </div>`
+    :`<div class="metric">
+        <span>Baseline</span><span class="roval">${esc(kr.metricBaseline||"—")}</span>
+        <span>Atual</span><span class="roval">${esc(kr.metricCurrent||"—")}</span>
+        <span>Meta</span><span class="target">${esc(kr.metricTarget)}</span>
+      </div>`;
+  if(kr.continuous){
+    const sel=isAdmin()
+      ?`<select data-field="kr-compliance" data-id="${kr.id}">
+          <option value="sem" ${kr.compliance==="sem"?"selected":""}>Sem medição</option>
+          <option value="dentro" ${kr.compliance==="dentro"?"selected":""}>Dentro da meta</option>
+          <option value="fora" ${kr.compliance==="fora"?"selected":""}>Fora da meta</option>
+        </select>`:"";
+    return `<div class="kr-result">${compBadge}${sel}${metric}<span class="kr-foot-note">KR contínuo — não “conclui”, monitora conformidade.</span></div>`;
+  }
+  if(kr.concludedAt){
+    const reopen=isAdmin()?`<button data-action="reopen-kr" data-id="${kr.id}">Reabrir KR</button>`:"";
+    return `<div class="kr-result"><span class="badge b-con"><i></i>KR concluído em ${fmtBR(kr.concludedAt)}</span>${metric}${reopen}</div>`;
+  }
+  const concludeBtn=isAdmin()?`<button class="primary" data-action="open-conclude-kr" data-id="${kr.id}">Concluir KR</button>`:`<span class="badge b-and"><i></i>Em curso</span>`;
+  return `<div class="kr-result">${concludeBtn}${metric}</div>`;
+}
+function krCard(kr,visibleActs){
+  const c=krCounts(kr);
+  const dots=SEV.concat("con").filter(k=>c[k]>0).map(k=>`<span class="dot" title="${ST[k].label}"><i style="background:${ST[k].c}"></i>${c[k]}</span>`).join("");
+  const openDesc=kr.description?` open`:"";
+  const dl=isAdmin()
+    ?`<input type="date" value="${escAttr(kr.deadline)}" data-field="kr-deadline" data-id="${kr.id}" title="Editar prazo do KR">`
+    :`<b>${fmtBR(kr.deadline)}</b>`;
+  const descBlock=isAdmin()
+    ?`<textarea data-field="kr-desc" data-id="${kr.id}" placeholder="Como este KR está sendo conduzido, decisões, riscos…">${esc(kr.description)}</textarea>`
+    :roText(kr.description,"Sem descrição registrada.");
+  return `<article class="kr" id="card-${kr.id}">
+    <div class="kr-head">
+      <div class="kr-top">
+        <div class="kr-title"><span class="kid">${kr.n}</span>${esc(kr.title)}</div>
+        <div class="chips"><span class="chip cad">${esc(kr.cadeira)}</span></div>
+      </div>
+      <div class="kr-sub">
+        <span class="mono">${esc(kr.deadlineLabel)} ${dl}</span>
+        <span class="mono">${c.con}/${kr.acts.length} atividades</span>
+        <span class="dotline">${dots}</span>
+        <span class="mono">${kr.evidences.length} evidência${kr.evidences.length===1?"":"s"} do KR</span>
+      </div>
+      ${krResult(kr)}
+    </div>
+    <div class="kr-desc">
+      <details${openDesc}><summary>Descrição do processo e evidências do KR</summary>
+        <div class="grid2" style="padding:8px 0 12px">
+          <div class="fld" style="margin-top:0"><label>Descrição do processo</label>${descBlock}</div>
+          <div class="fld" style="margin-top:0"><label>Evidências do resultado (métrica)</label>
+            ${evList(kr,"kr")}
+            ${evForm(kr.id,"kr")}
+          </div>
+        </div>
+      </details>
+    </div>
+    <ul class="acts">${visibleActs.map(a=>actRow(a,kr)).join("")}</ul>
+  </article>`;
+}
+function filtersActive(){return ui.obj!=="all"||ui.cad!=="all"||ui.q.trim()!==""||ui.statuses.size>0;}
+function render(){
+  const all=[];state.objectives.forEach(o=>o.krs.forEach(k=>k.acts.forEach(a=>all.push([a,k]))));
+  const tot={nao:0,and:0,ate:0,atr:0,con:0};all.forEach(([a,k])=>tot[actStatus(a,k).k]++);
+  const order=["nao","and","ate","atr","con"];
+  $("#rail").innerHTML=order.map(k=>`<button class="tile ${ui.statuses.has(k)?"active":""}" style="--tc:${ST[k].c}" data-action="filter-status" data-st="${k}"><div class="n">${tot[k]}</div><div class="l">${ST[k].label}</div></button>`).join("");
+  const done=tot.con,total=all.length;
+  $("#progTxt").textContent=done+"/"+total;
+  $("#progBar").style.width=(total?Math.round(done/total*100):0)+"%";
+  $("#todayTxt").textContent="hoje: "+fmtBR(todayISO());
+  const cads=[...new Set(state.objectives.flatMap(o=>o.krs.map(k=>k.cadeira)))];
+  const sel=$("#cadSel");
+  sel.innerHTML=`<option value="all">Todas as cadeiras</option>`+cads.map(c=>`<option ${ui.cad===c?"selected":""} value="${escAttr(c)}">${esc(c)}</option>`).join("");
+  $("#objTabs").querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.obj===ui.obj));
+  $("#clearFilters").style.display=filtersActive()?"":"none";
+  const q=norm(ui.q);
+  let html="";
+  state.objectives.forEach(o=>{
+    if(ui.obj!=="all"&&ui.obj!==o.id)return;
+    let cards="";
+    o.krs.forEach(k=>{
+      if(ui.cad!=="all"&&k.cadeira!==ui.cad)return;
+      const krMatch=q&&norm(k.title+" "+k.n).includes(q);
+      const vis=k.acts.filter(a=>{
+        if(ui.statuses.size&&!ui.statuses.has(actStatus(a,k).k))return false;
+        if(q&&!krMatch&&!norm(a.title).includes(q))return false;
+        return true;
+      });
+      if(filtersActive()&&vis.length===0&&!(krMatch&&!ui.statuses.size))return;
+      cards+=krCard(k,vis.length||!filtersActive()?vis:k.acts);
+    });
+    if(!cards)return;
+    html+=`<section class="obj">
+      <div class="obj-head"><span class="obj-code">${esc(o.code)}</span><span class="obj-title">${esc(o.title)}</span><span class="obj-owner">Owner: ${esc(o.owner)}</span></div>
+      ${cards}</section>`;
+  });
+  $("#main").innerHTML=html||`<div class="empty-note">Nada corresponde aos filtros atuais.</div>`;
+}
+
+/* ================= modal ================= */
+function openModal(html){$("#modalRoot").innerHTML=`<div class="overlay" data-action="overlay"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`;}
+function closeModal(){$("#modalRoot").innerHTML="";}
+function concludeActModal(a,kr){
+  const needEv=a.evidences.length===0;
+  openModal(`
+    <h3>Concluir atividade</h3>
+    <div class="sub">${esc(a.title)}</div>
+    <div class="fld"><label>Data de conclusão</label><input type="date" id="cDate" value="${todayISO()}"></div>
+    <div class="fld"><label>Evidência da entrega ${needEv?'<span class="req">(obrigatória — sem evidência não conclui)</span>':`<span class="hint">(${a.evidences.length} já registrada${a.evidences.length===1?"":"s"} — adicionar outra é opcional)</span>`}</label>
+      <div class="inline" style="align-items:stretch">
+        <select id="cType"><option value="link">Link</option><option value="texto">Texto</option></select>
+        <textarea id="cVal" style="flex:1;min-width:200px" placeholder="Cole o link ou descreva a evidência"></textarea>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button data-action="modal-cancel">Cancelar</button>
+      <button class="primary" data-action="confirm-conclude-act" data-id="${a.id}">Concluir</button>
+    </div>`);
+}
+function concludeKrModal(kr){
+  const c=krCounts(kr),pend=kr.acts.length-c.con;
+  const needEv=kr.evidences.length===0;
+  const warns=[];
+  if(pend>0)warns.push(`${pend} atividade${pend===1?"":"s"} deste KR ainda não ${pend===1?"está concluída":"estão concluídas"}.`);
+  if(!kr.metricCurrent.trim())warns.push(`O campo “Atual” da métrica está vazio. KR sem número é opinião, não resultado.`);
+  openModal(`
+    <h3>Concluir KR</h3>
+    <div class="sub">${esc(kr.n)} — ${esc(kr.title)} · Meta: ${esc(kr.metricTarget)}</div>
+    ${warns.map(w=>`<div class="warn">${esc(w)}</div>`).join("")}
+    <div class="fld"><label>Data de conclusão</label><input type="date" id="cDate" value="${todayISO()}"></div>
+    <div class="fld"><label>Evidência do resultado ${needEv?'<span class="req">(obrigatória)</span>':`<span class="hint">(${kr.evidences.length} já registrada${kr.evidences.length===1?"":"s"} — opcional)</span>`}</label>
+      <div class="inline" style="align-items:stretch">
+        <select id="cType"><option value="link">Link</option><option value="texto">Texto</option></select>
+        <textarea id="cVal" style="flex:1;min-width:200px" placeholder="Link do relatório, print da métrica, descrição…"></textarea>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button data-action="modal-cancel">Cancelar</button>
+      <button class="primary" data-action="confirm-conclude-kr" data-id="${kr.id}">Concluir KR</button>
+    </div>`);
+}
+function publishModal(){
+  openModal(`
+    <h3>Publicar dados</h3>
+    <div class="sub">O painel é estático: publicar significa atualizar o arquivo <span class="mono">dados.json</span> no repositório do GitHub.</div>
+    <ol>
+      <li>Clique em <b>Baixar dados.json</b> abaixo.</li>
+      <li>No GitHub, abra o repositório → <b>Add file → Upload files</b>.</li>
+      <li>Arraste o arquivo baixado (substitui o anterior) e clique em <b>Commit changes</b>.</li>
+      <li>Em 1–2 minutos os visualizadores veem a nova versão (botão Atualizar).</li>
+    </ol>
+    <div class="modal-actions">
+      <button data-action="modal-cancel">Fechar</button>
+      <button class="primary" data-action="confirm-publish">Baixar dados.json</button>
+    </div>`);
+}
+function passwordsModal(){
+  openModal(`
+    <h3>Alterar senhas de acesso</h3>
+    <div class="sub">Informe a senha atual de administrador e preencha apenas o que quiser alterar. A mudança só vale depois de <b>publicar</b> o novo <span class="mono">dados.json</span>.</div>
+    <div class="fld"><label>Senha atual (administrador)</label><input type="password" id="pwCur" style="width:100%" autocomplete="off"></div>
+    <div class="fld"><label>Nova senha do administrador <span class="hint">(deixe vazio para manter)</span></label><input type="password" id="pwA" style="width:100%" autocomplete="off"></div>
+    <div class="fld"><label>Nova senha dos visualizadores <span class="hint">(deixe vazio para manter)</span></label><input type="password" id="pwV" style="width:100%" autocomplete="off"></div>
+    <div class="warn" id="pwErr" style="display:none"></div>
+    <div class="modal-actions">
+      <button data-action="modal-cancel">Cancelar</button>
+      <button class="primary" data-action="confirm-passwords">Salvar senhas</button>
+    </div>`);
+}
+function normalizeLink(v){v=v.trim();if(!/^https?:\/\//i.test(v))v="https://"+v;return v;}
+function readModalEvidence(owner){
+  const type=$("#cType").value,val=$("#cVal").value.trim();
+  if(val){owner.evidences.push({type,value:type==="link"?normalizeLink(val):val,addedAt:todayISO()});return true;}
+  return owner.evidences.length>0;
+}
+function downloadJSON(){
+  state.lastUpdated=new Date().toISOString();
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="dados.json";a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+
+/* ================= eventos ================= */
+const VIEWER_OK=new Set(["toggle","filter-status","modal-cancel","overlay","logout","refresh"]);
+document.addEventListener("click",async ev=>{
+  const t=ev.target.closest("[data-action]");if(!t)return;
+  const act=t.dataset.action,id=t.dataset.id;
+  if(act==="overlay"&&ev.target===t)return closeModal();
+  if(!isAdmin()&&!VIEWER_OK.has(act))return;
+  switch(act){
+    case "logout":await logout();break;
+    case "refresh":{
+      const remote=await fetchRemote();
+      if(remote){state=remote;enterApp();}
+      else alert("Não foi possível recarregar o dados.json publicado.");
+      break;}
+    case "toggle":ui.open.has(id)?ui.open.delete(id):ui.open.add(id);render();break;
+    case "start-act":{const r=findAct(id);if(!r)return;r.a.startedAt=todayISO();markDirty();render();break;}
+    case "open-conclude":{const r=findAct(id);if(!r)return;concludeActModal(r.a,r.k);break;}
+    case "confirm-conclude-act":{const r=findAct(id);if(!r)return;
+      if(!readModalEvidence(r.a)){alert("Evidência obrigatória: cole um link ou descreva a entrega.");return;}
+      r.a.concludedAt=$("#cDate").value||todayISO();if(!r.a.startedAt)r.a.startedAt=r.a.concludedAt;
+      closeModal();markDirty();render();break;}
+    case "reopen-act":{const r=findAct(id);if(!r)return;r.a.concludedAt=null;markDirty();render();break;}
+    case "clear-deadline":{const r=findAct(id);if(!r)return;r.a.deadline=null;markDirty();render();break;}
+    case "clear-started":{const r=findAct(id);if(!r)return;r.a.startedAt=null;markDirty();render();break;}
+    case "open-conclude-kr":{const r=findKr(id);if(!r)return;concludeKrModal(r.k);break;}
+    case "confirm-conclude-kr":{const r=findKr(id);if(!r)return;
+      if(!readModalEvidence(r.k)){alert("Evidência obrigatória para fechar o KR.");return;}
+      r.k.concludedAt=$("#cDate").value||todayISO();closeModal();markDirty();render();break;}
+    case "reopen-kr":{const r=findKr(id);if(!r)return;r.k.concludedAt=null;markDirty();render();break;}
+    case "add-ev":{
+      const kind=t.dataset.kind,owner=kind==="act"?findAct(id)?.a:findKr(id)?.k;if(!owner)return;
+      const type=$("#evType-"+CSS.escape(id)).value,val=$("#evVal-"+CSS.escape(id)).value.trim();
+      if(!val){alert("Informe o link ou o texto da evidência.");return;}
+      owner.evidences.push({type,value:type==="link"?normalizeLink(val):val,addedAt:todayISO()});
+      markDirty();render();break;}
+    case "del-ev":{
+      const kind=t.dataset.kind,owner=kind==="act"?findAct(id)?.a:findKr(id)?.k;if(!owner)return;
+      if(!confirm("Remover esta evidência?"))return;
+      owner.evidences.splice(Number(t.dataset.idx),1);markDirty();render();break;}
+    case "filter-status":{const k=t.dataset.st;ui.statuses.has(k)?ui.statuses.delete(k):ui.statuses.add(k);render();break;}
+    case "modal-cancel":closeModal();break;
+    case "publish":publishModal();break;
+    case "confirm-publish":downloadJSON();break;
+    case "passwords":passwordsModal();break;
+    case "confirm-passwords":{
+      const errEl=$("#pwErr");const showErr=m=>{errEl.textContent=m;errEl.style.display="block";};
+      const cur=await shaHex($("#pwCur").value);
+      if(cur!==state.auth.a)return showErr("Senha atual incorreta.");
+      const nA=$("#pwA").value,nV=$("#pwV").value;
+      if(!nA&&!nV)return showErr("Preencha pelo menos uma senha nova.");
+      if((nA&&nA.length<4)||(nV&&nV.length<4))return showErr("Use senhas com pelo menos 4 caracteres.");
+      const newA=nA?await shaHex(nA):state.auth.a;
+      const newV=nV?await shaHex(nV):state.auth.v;
+      if(newA===newV)return showErr("As senhas de administrador e visualizador precisam ser diferentes.");
+      state.auth={a:newA,v:newV};
+      closeModal();markDirty();
+      alert("Senhas atualizadas localmente. Lembre-se: elas só passam a valer depois que você publicar o novo dados.json no GitHub.");
+      break;}
+    case "import":$("#importFile").click();break;
+    case "reset":{
+      if(!confirm("Isso apaga todos os status, datas, evidências e descrições e restaura o documento original dos OKRs (as senhas atuais são mantidas). Continuar?"))return;
+      const auth=state.auth;state=hydrate(seed());state.auth=auth;ui.open.clear();markDirty();render();break;}
+  }
+});
+document.addEventListener("change",ev=>{
+  if(!isAdmin())return;
+  const t=ev.target.closest("[data-field]");if(!t)return;
+  const f=t.dataset.field,id=t.dataset.id,v=t.value;
+  if(f.startsWith("act-")){const r=findAct(id);if(!r)return;
+    if(f==="act-deadline")r.a.deadline=v||null;
+    if(f==="act-started")r.a.startedAt=v||null;
+    if(f==="act-concluded"&&v)r.a.concludedAt=v;
+    markDirty();render();return;}
+  const r=findKr(id);if(!r)return;
+  if(f==="kr-deadline"&&v)r.k.deadline=v;
+  if(f==="kr-compliance")r.k.compliance=v;
+  markDirty();render();
+});
+document.addEventListener("input",ev=>{
+  if(ev.target.id==="searchBox"){ui.q=ev.target.value;render();return;}
+  if(!isAdmin())return;
+  const t=ev.target.closest("[data-field]");if(!t)return;
+  const f=t.dataset.field,id=t.dataset.id,v=t.value;
+  if(f==="act-desc"){const r=findAct(id);if(r){r.a.description=v;markDirty();}return;}
+  if(f==="kr-desc"){const r=findKr(id);if(r){r.k.description=v;markDirty();}return;}
+  if(f==="kr-baseline"){const r=findKr(id);if(r){r.k.metricBaseline=v;markDirty();}return;}
+  if(f==="kr-current"){const r=findKr(id);if(r){r.k.metricCurrent=v;markDirty();}return;}
+});
+$("#objTabs").addEventListener("click",ev=>{const b=ev.target.closest("button[data-obj]");if(!b)return;ui.obj=b.dataset.obj;render();});
+$("#cadSel").addEventListener("change",ev=>{ui.cad=ev.target.value;render();});
+$("#clearFilters").addEventListener("click",()=>{ui.obj="all";ui.cad="all";ui.q="";ui.statuses.clear();$("#searchBox").value="";render();});
+$("#importFile").addEventListener("change",async ev=>{
+  if(!isAdmin())return;
+  const f=ev.target.files[0];if(!f)return;
+  try{
+    const txt=await f.text();const data=JSON.parse(txt);
+    if(!data||!Array.isArray(data.objectives))throw new Error("estrutura inválida");
+    const auth=state.auth;state=hydrate(data);if(!state.auth)state.auth=auth;
+    markDirty();render();
+  }catch(e){alert("Arquivo inválido: "+e.message);}
+  ev.target.value="";
+});
+document.addEventListener("keydown",ev=>{if(ev.key==="Escape")closeModal();});
+
+/* ================= init ================= */
+startAuth();
+</script>
+</body>
+</html>
