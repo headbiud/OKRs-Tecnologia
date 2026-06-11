@@ -2,8 +2,7 @@
 
 Painel web para monitorar, acompanhar e validar as entregas dos OKRs da área de Tecnologia da BIUD (Governança 2026). Site estático, hospedado no GitHub Pages, sem backend e sem dependência de equipe técnica para operar.
 
-🔗 **Acesso ao painel:** `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO`
-*(substitua pelo endereço real após ativar o GitHub Pages)*
+🔗 **Acesso ao painel:** `[https://headbiud.github.io/OKRs-Tecnologia/]
 
 ---
 
