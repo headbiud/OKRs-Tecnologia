@@ -1,0 +1,562 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-06-11T22:39:58.240Z",
+  "auth": {
+    "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
+    "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
+  },
+  "objectives": [
+    {
+      "id": "O1",
+      "code": "TEC-O1",
+      "title": "Garantir previsibilidade, qualidade e velocidade das entregas",
+      "owner": "Gustavo (Head Tecnologia)",
+      "krs": [
+        {
+          "id": "O1K1",
+          "n": "KR1",
+          "title": "Manter desvio de sprint abaixo de 20% a partir de mai/2026",
+          "cadeira": "Head Tech + PM",
+          "deadline": "2026-05-31",
+          "deadlineLabel": "vigente a partir de",
+          "continuous": true,
+          "metricTarget": "< 20% de desvio",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "fora",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://qa.biud.com.br/",
+              "addedAt": "2026-06-11"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O1K1A1",
+              "title": "Criar e documentar playbook interno de engenharia",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O1K1A2",
+              "title": "Padronizar ciclo de desenvolvimento e conceito de pronto",
+              "deadline": null,
+              "startedAt": "2026-03-03",
+              "concludedAt": "2026-03-30",
+              "description": "Processo definido em março. Existe uma constante adaptação a partir da necessidade. É um processo mutável, mas bem estabilizado. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/presentation/d/1NHn24GG1WRQ2pzue91W2gJ3RGFV05K7D/edit?usp=sharing&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K1A3",
+              "title": "Identificar e publicar capacidade real do time",
+              "deadline": "2026-07-31",
+              "startedAt": "2026-05-28",
+              "concludedAt": null,
+              "description": "Está em andamento. Iniciamos o processo de IA first que está sendo analisado a partir do primeiro escopo de projeto definido. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://acr.lekto.com.br/ops/dashboard",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://drive.google.com/drive/folders/11Xannc-6rsZuP_rAtR0X66LrixKYGF-o?usp=sharing",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "O1K2",
+          "n": "KR2",
+          "title": "Reduzir lead time (ideia → produção) em pelo menos 25% até set/2026",
+          "cadeira": "Head Tech",
+          "deadline": "2026-09-30",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "−25% vs baseline",
+          "baselineNote": "Δ baseline medida até 27/mar",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O1K2A1",
+              "title": "Mapear gargalos no fluxo de desenvolvimento",
+              "deadline": null,
+              "startedAt": "2026-03-03",
+              "concludedAt": null,
+              "description": "Primeiro gargalo: Time sem processo de desenvolvimento estabelecido\nSegundo gargalo: Desenvolvimento sem processo de Revisão de Código\nTerceiro gargalo: Processos de QA em estruturação\n\nKR em constante evolução a partir de implementação de melhoria de processos. ",
+              "evidences": []
+            },
+            {
+              "id": "O1K2A2",
+              "title": "Implementar projeto de IA First para melhoria da qualidade de desenvolvimento",
+              "deadline": null,
+              "startedAt": "2026-05-26",
+              "concludedAt": "2026-06-11",
+              "description": "Primeira sprint no modelo IA First iniciada em 28/05/2026",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://drive.google.com/drive/folders/11Xannc-6rsZuP_rAtR0X66LrixKYGF-o?usp=sharing",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K2A3",
+              "title": "Criar métrica de tokens de IA para medir ganho de velocidade",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            }
+          ]
+        },
+        {
+          "id": "O1K3",
+          "n": "KR3",
+          "title": "Reduzir bugs em produção em pelo menos 35% até out/2026",
+          "cadeira": "Head Tech + QA",
+          "deadline": "2026-10-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "−35% vs baseline",
+          "baselineNote": "Δ baseline medida até 27/mar",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "A cada sprint existe o mapeamento de bugs no decorrer do processo de desenvolvimento e pós deploy. \nIsso é medido diretamente na esteira de BUGS, criada no JIRA com automação direta junto ao CLICKUP. \n\nO site https://qa.biud.com.br/ traz esse acompanhamento a partir da aba \"métricas\"\n",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://qa.biud.com.br/",
+              "addedAt": "2026-06-11"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O1K3A1",
+              "title": "Padronizar critérios de teste baseados em regras de negócio com IA",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O1K3A2",
+              "title": "Implementar esteira de qualidade automatizada",
+              "deadline": null,
+              "startedAt": "2026-04-28",
+              "concludedAt": null,
+              "description": "Estratégia e Implementação da Automação de Testes iniciada em 28/04 a partir de um projeto mapeado no JIRA com atividades constantes do Rogério. \n\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/browse/BT-240?atlOrigin=eyJpIjoiMzNjNjhhNTAwNjU5NDc5YWJlZDVlMjZiNjU3OWI3MWEiLCJwIjoiaiJ9",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K3A3",
+              "title": "Implementar testes automatizados nas principais jornadas",
+              "deadline": null,
+              "startedAt": "2026-05-01",
+              "concludedAt": null,
+              "description": "Automações de casos de tstes nos principais fluxos iniciada e em andamento. Atualmente tivemos os seguintes casos automatizados:\n\nCaso de Teste\tTipo\tStatus\n🔐 Autenticação  ·  2 casos\nLogin com Autenticação AMEI\tUI\t✅ Feito\nLogout do Sistema\tUI\t✅ Feito\n🏁 Onboarding  ·  5 casos\nSeleção de Empresa\tUI\t✅ Feito\nCarregamento do Dashboard Inicial\tUI\t✅ Feito\nNavegação pelo Menu Lateral\tUI\t✅ Feito\nValidação de Porte na Seleção CPE (ME/EPP/MEI)\tUI\t✅ Feito\nPersistência de Dados no Cadastro\tUI\t✅ Feito\n🌱 Jornada ESG  ·  2 casos\nAcesso ao Questionário de Diagnóstico\tUI\t✅ Feito\nNavegação entre Perguntas do Questionário\tUI\t✅ Feito\n\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#sprint",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "O1K4",
+          "n": "KR4",
+          "title": "Ter painel de indicadores ágeis ativo e atualizado semanalmente até jun/2026",
+          "cadeira": "PM (Lucas)",
+          "deadline": "2026-06-30",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "Dashboard ativo + atualização semanal",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O1K4A1",
+              "title": "Automatizar extração de dados do ClickUp/Jira",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O1K4A2",
+              "title": "Centralizar informações de andamento de Tecnologia",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O1K4A3",
+              "title": "Construir dashboards consumidos diretamente do banco de dados",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            }
+          ]
+        },
+        {
+          "id": "O1K5",
+          "n": "KR5",
+          "title": "100% do time treinado e utilizando IA no ciclo de desenvolvimento",
+          "cadeira": "Head Tech",
+          "deadline": "2026-05-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "100% do time",
+          "baselineNote": "Documento diverge: título diz jun/26, meta diz mai/26 — adotado mai/26 (edite o prazo se a data oficial for jun)",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O1K5A1",
+              "title": "Realizar workshops internos de IA por área",
+              "deadline": "2026-07-30",
+              "startedAt": "2026-04-22",
+              "concludedAt": null,
+              "description": "Iniciado o processo de workshops internos gerais, incluindo IA. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#biud-talks",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K5A2",
+              "title": "Compartilhar metodologias e melhores práticas entre o time",
+              "deadline": "2026-07-30",
+              "startedAt": "2026-04-22",
+              "concludedAt": null,
+              "description": "BIUD TALKs - Temas com foco em IA\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#biud-talks",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K5A3",
+              "title": "Criar guia de ferramenta ideal para cada etapa do ciclo de desenvolvimento",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O1K5A4",
+              "title": "Implementar TecWeek — apresentações internas de tecnologia",
+              "deadline": null,
+              "startedAt": "2026-04-22",
+              "concludedAt": "2026-04-22",
+              "description": "Implementação do BIUD TALKS",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#biud-talks",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "O2",
+      "code": "TEC-O2",
+      "title": "Garantir integridade, segurança e performance da plataforma",
+      "owner": "Gustavo (Head Tecnologia)",
+      "krs": [
+        {
+          "id": "O2K1",
+          "n": "KR1",
+          "title": "Manter disponibilidade da plataforma acima de 99,5% a partir de jun/2026",
+          "cadeira": "Head Tech + DevOps",
+          "deadline": "2026-06-30",
+          "deadlineLabel": "vigente a partir de",
+          "continuous": true,
+          "metricTarget": "≥ 99,5% uptime",
+          "baselineNote": "",
+          "metricBaseline": "99,5%",
+          "metricCurrent": "99,97%",
+          "compliance": "dentro",
+          "concludedAt": null,
+          "description": "Criado um painel de monitoramento com todos os itens e aplicações que estão ligadas direta ou indiretamente na plataforma, considerando todos os ambientes: \nDEV, HMG e PROD",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://availability.biud.com.br/dashboard?",
+              "addedAt": "2026-06-11"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O2K1A1",
+              "title": "Garantir confiabilidade dos dados nas 3 esferas (interno, Sebrae, MPEs)",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K1A2",
+              "title": "Implementar monitoramento de infra com alertas automatizados",
+              "deadline": null,
+              "startedAt": "2026-04-08",
+              "concludedAt": "2026-04-30",
+              "description": "Monitoramento de infra:\n\n- Geração de alertas diretamente integrada com o Discord - Canal oficial de comunicação do time de Tecnologia. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://availability.biud.com.br/dashboard",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O2K1A3",
+              "title": "Externalizar informações de infraestrutura para visibilidade",
+              "deadline": null,
+              "startedAt": "2026-04-30",
+              "concludedAt": "2026-06-11",
+              "description": "",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://availability.biud.com.br/dashboard",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "O2K2",
+          "n": "KR2",
+          "title": "Manter zero vulnerabilidades críticas não corrigidas durante o ano",
+          "cadeira": "Head Tech + InfoSec",
+          "deadline": "2026-12-31",
+          "deadlineLabel": "vigência durante todo o ano, até",
+          "continuous": true,
+          "metricTarget": "0 críticas abertas",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O2K2A1",
+              "title": "Implementar conceito de Privacy by Design",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K2A2",
+              "title": "Criar frente de LGPD com regras de segurança",
+              "deadline": null,
+              "startedAt": "2026-05-01",
+              "concludedAt": null,
+              "description": "Iniciado o processo de continuidade à Política de Segurança de Informação com o Paulo (DPO). \nDocumentos encaminhados no dia 28/05 para validação\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1Emw2H3be7b0TGtOq3eePKKhuCBkhoxA9/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1C1xdwI3H-Xk08Etd-oHzYFH_Zn3ptYiQ/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1ytW4gzfd8MuwdvyuoTK5xgh37BdntMYG/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1ytW4gzfd8MuwdvyuoTK5xgh37BdntMYG/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O2K2A3",
+              "title": "Documentar playbook de segurança com matriz de decisão",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K2A4",
+              "title": "Executar testes sazonais de performance e segurança",
+              "deadline": null,
+              "startedAt": "2026-05-28",
+              "concludedAt": null,
+              "description": "Primeiro teste, após minha chegada, foi realizado no dia 28/05 para preparo de recebimendo de acessos em relação ao disparo do SEBRAE. \n\nSerá criado um cronograma de testes. ",
+              "evidences": []
+            }
+          ]
+        },
+        {
+          "id": "O2K3",
+          "n": "KR3",
+          "title": "Ter protocolo formal de gestão de incidentes documentado e ativo até mai/2026",
+          "cadeira": "Head Tech",
+          "deadline": "2026-05-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "Protocolo ativo",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O2K3A1",
+              "title": "Definir fluxo de escalonamento por severidade",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K3A2",
+              "title": "Documentar SLA interno por tipo de incidente",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K3A3",
+              "title": "Implementar post-mortem obrigatório para incidentes P0/P1",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            }
+          ]
+        },
+        {
+          "id": "O2K4",
+          "n": "KR4",
+          "title": "Reduzir tempo de carregamento das páginas críticas para menos de 2 segundos até ago/2026",
+          "cadeira": "DevOps (Guilherme Lima)",
+          "deadline": "2026-08-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "< 2s nas páginas críticas",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O2K4A1",
+              "title": "Executar otimização de performance frontend",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K4A2",
+              "title": "Implementar monitoramento de latência (Up Time Kuma/DataDog)",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K4A3",
+              "title": "Definir budget de performance por página crítica",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
