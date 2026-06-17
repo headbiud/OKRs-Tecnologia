@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-06-11T22:39:58.240Z",
+  "lastUpdated": "2026-06-17T17:59:18.915Z",
   "auth": {
     "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
     "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
@@ -39,10 +39,16 @@
               "id": "O1K1A1",
               "title": "Criar e documentar playbook interno de engenharia",
               "deadline": null,
-              "startedAt": null,
-              "concludedAt": null,
-              "description": "",
-              "evidences": []
+              "startedAt": "2026-03-10",
+              "concludedAt": "2026-05-31",
+              "description": "Documentação do projeto completa no Github e com evoluções e atualizações constantes. \n\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://github.com/biudtech/docs/tree/develop",
+                  "addedAt": "2026-06-17"
+                }
+              ]
             },
             {
               "id": "O1K1A2",
@@ -540,10 +546,16 @@
               "id": "O2K4A2",
               "title": "Implementar monitoramento de latência (Up Time Kuma/DataDog)",
               "deadline": null,
-              "startedAt": null,
-              "concludedAt": null,
-              "description": "",
-              "evidences": []
+              "startedAt": "2026-04-30",
+              "concludedAt": "2026-05-30",
+              "description": "Criação de dashboard de monitoramento incluindo notificações via Discord, WhatsApp e e-mail para o Guilherme Lima. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://status.biud.com.br/dashboard",
+                  "addedAt": "2026-06-17"
+                }
+              ]
             },
             {
               "id": "O2K4A3",
