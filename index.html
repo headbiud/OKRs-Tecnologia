@@ -427,6 +427,7 @@ function renderHeadMeta(){
     :`<span class="role-pill role-viewer">VISUALIZADOR</span>`;
   $("#headMeta").innerHTML=isAdmin()
     ?`${pill}
+      <a href="orcamento.html"><button class="ghost" title="Abrir painel de orçamento (orçado × realizado)">Orçamento</button></a>
       <span class="save-pill" id="savePill">—</span>
       <button class="primary" data-action="publish" title="Baixar dados.json para subir no GitHub">Publicar dados</button>
       <button class="ghost" data-action="import" title="Carregar um dados.json local para continuar editando">Importar</button>
@@ -434,6 +435,7 @@ function renderHeadMeta(){
       <button class="ghost danger" data-action="reset" title="Apagar tudo e voltar ao documento original">Resetar</button>
       <button data-action="logout">Sair</button>`
     :`${pill}
+      <a href="orcamento.html"><button title="Abrir painel de orçamento (orçado × realizado)">Orçamento</button></a>
       <span class="save-pill" id="savePill">somente leitura</span>
       <button data-action="refresh" title="Recarregar dados publicados">Atualizar</button>
       <button data-action="logout">Sair</button>`;
