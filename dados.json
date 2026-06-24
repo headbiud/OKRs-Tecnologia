@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-06-17T17:59:18.915Z",
+  "lastUpdated": "2026-06-24T20:10:32.345Z",
   "auth": {
     "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
     "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
@@ -23,15 +23,15 @@
           "metricTarget": "< 20% de desvio",
           "baselineNote": "",
           "metricBaseline": "",
-          "metricCurrent": "",
+          "metricCurrent": "23%",
           "compliance": "fora",
           "concludedAt": null,
-          "description": "",
+          "description": "Manter o desvio será validado sprint a sprint conforme a demanda. \nPara a sprint 41 (corrente), temos o desvio de 23% para o emissor, que é um épico de correção de funcionalidade já desenvolvida em entregue em produção anteriormente. ",
           "evidences": [
             {
               "type": "link",
-              "value": "https://qa.biud.com.br/",
-              "addedAt": "2026-06-11"
+              "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
+              "addedAt": "2026-06-24"
             }
           ],
           "acts": [
@@ -132,10 +132,26 @@
               "id": "O1K2A3",
               "title": "Criar métrica de tokens de IA para medir ganho de velocidade",
               "deadline": null,
-              "startedAt": null,
-              "concludedAt": null,
-              "description": "",
-              "evidences": []
+              "startedAt": "2026-06-24",
+              "concludedAt": "2026-06-24",
+              "description": "Métrica não será medida. \n\nAnalisar Tokens de IA não é medição de velocidade. Vários estudos apontam que é uma forma falha de medição e que não traz apontamentos reais de produtividade a partir do quantitativo de tokens ao invés de analisar a saída e resultados entregues. \n\nIremos medir os processos via GSD e evoluções de entregas a partir do aumento da capacidade de entrega do time",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://www.startse.com/artigos/tokenmaxxing/",
+                  "addedAt": "2026-06-24"
+                },
+                {
+                  "type": "link",
+                  "value": "https://getdx.com/blog/ai-measurement-hub/",
+                  "addedAt": "2026-06-24"
+                },
+                {
+                  "type": "link",
+                  "value": "https://coletivo.tech/artigos/cezar-taurion-tokenmaxxing-metrica-produtividade-ia/",
+                  "addedAt": "2026-06-24"
+                }
+              ]
             }
           ]
         },
@@ -150,7 +166,7 @@
           "metricTarget": "−35% vs baseline",
           "baselineNote": "Δ baseline medida até 27/mar",
           "metricBaseline": "",
-          "metricCurrent": "",
+          "metricCurrent": "-35% em produção",
           "compliance": "sem",
           "concludedAt": null,
           "description": "A cada sprint existe o mapeamento de bugs no decorrer do processo de desenvolvimento e pós deploy. \nIsso é medido diretamente na esteira de BUGS, criada no JIRA com automação direta junto ao CLICKUP. \n\nO site https://qa.biud.com.br/ traz esse acompanhamento a partir da aba \"métricas\"\n",
@@ -300,10 +316,21 @@
               "id": "O1K5A3",
               "title": "Criar guia de ferramenta ideal para cada etapa do ciclo de desenvolvimento",
               "deadline": null,
-              "startedAt": null,
-              "concludedAt": null,
-              "description": "",
-              "evidences": []
+              "startedAt": "2026-04-01",
+              "concludedAt": "2026-05-26",
+              "description": "Criação de estrutura de GSD e utilização de ACR - Code review automatizado, para o fluxo de desenvolvimento. \n\nCriamos um Guia de ferramenta para o fluxo de desenvolvimento a partir do modelo IA Fist. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://acr.lekto.com.br/admin/overview",
+                  "addedAt": "2026-06-24"
+                },
+                {
+                  "type": "link",
+                  "value": "https://github.com/biudtech/docs",
+                  "addedAt": "2026-06-24"
+                }
+              ]
             },
             {
               "id": "O1K5A4",
