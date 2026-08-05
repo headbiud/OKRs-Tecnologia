@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-06-24T20:10:32.345Z",
+  "lastUpdated": "2026-08-05T17:14:01.110Z",
   "auth": {
     "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
     "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
@@ -24,7 +24,7 @@
           "baselineNote": "",
           "metricBaseline": "",
           "metricCurrent": "23%",
-          "compliance": "fora",
+          "compliance": "dentro",
           "concludedAt": null,
           "description": "Manter o desvio será validado sprint a sprint conforme a demanda. \nPara a sprint 41 (corrente), temos o desvio de 23% para o emissor, que é um épico de correção de funcionalidade já desenvolvida em entregue em produção anteriormente. ",
           "evidences": [
@@ -182,10 +182,16 @@
               "id": "O1K3A1",
               "title": "Padronizar critérios de teste baseados em regras de negócio com IA",
               "deadline": null,
-              "startedAt": null,
-              "concludedAt": null,
+              "startedAt": "2026-07-24",
+              "concludedAt": "2026-07-24",
               "description": "",
-              "evidences": []
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/wiki/spaces/BT/folder/40501250?atlOrigin=eyJpIjoiNzU2YTY0NDI1ZTk1NDM3NmJjOThkZDhmYmIxODIwYzciLCJwIjoiYyJ9",
+                  "addedAt": "2026-08-05"
+                }
+              ]
             },
             {
               "id": "O1K3A2",
@@ -207,13 +213,18 @@
               "title": "Implementar testes automatizados nas principais jornadas",
               "deadline": null,
               "startedAt": "2026-05-01",
-              "concludedAt": null,
-              "description": "Automações de casos de tstes nos principais fluxos iniciada e em andamento. Atualmente tivemos os seguintes casos automatizados:\n\nCaso de Teste\tTipo\tStatus\n🔐 Autenticação  ·  2 casos\nLogin com Autenticação AMEI\tUI\t✅ Feito\nLogout do Sistema\tUI\t✅ Feito\n🏁 Onboarding  ·  5 casos\nSeleção de Empresa\tUI\t✅ Feito\nCarregamento do Dashboard Inicial\tUI\t✅ Feito\nNavegação pelo Menu Lateral\tUI\t✅ Feito\nValidação de Porte na Seleção CPE (ME/EPP/MEI)\tUI\t✅ Feito\nPersistência de Dados no Cadastro\tUI\t✅ Feito\n🌱 Jornada ESG  ·  2 casos\nAcesso ao Questionário de Diagnóstico\tUI\t✅ Feito\nNavegação entre Perguntas do Questionário\tUI\t✅ Feito\n\n",
+              "concludedAt": "2026-07-24",
+              "description": "Automações de casos de tstes nos principais fluxos iniciada e em andamento. Atualmente tivemos os seguintes casos automatizados:\n\nAté o momento está finalizado, mas é uma atividade em constante evolução. \n\nCaso de Teste\tTipo\tStatus\n🔐 Autenticação  ·  2 casos\nLogin com Autenticação AMEI\tUI\t✅ Feito\nLogout do Sistema\tUI\t✅ Feito\n🏁 Onboarding  ·  5 casos\nSeleção de Empresa\tUI\t✅ Feito\nCarregamento do Dashboard Inicial\tUI\t✅ Feito\nNavegação pelo Menu Lateral\tUI\t✅ Feito\nValidação de Porte na Seleção CPE (ME/EPP/MEI)\tUI\t✅ Feito\nPersistência de Dados no Cadastro\tUI\t✅ Feito\n🌱 Jornada ESG  ·  2 casos\nAcesso ao Questionário de Diagnóstico\tUI\t✅ Feito\nNavegação entre Perguntas do Questionário\tUI\t✅ Feito\n\n",
               "evidences": [
                 {
                   "type": "link",
                   "value": "https://qa.biud.com.br/index.html#sprint",
                   "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/wiki/spaces/BT/pages/40337451/Documenta+o+de+QA+ndice+Geral#Testes-Automatizados",
+                  "addedAt": "2026-08-05"
                 }
               ]
             }
@@ -302,13 +313,18 @@
               "title": "Compartilhar metodologias e melhores práticas entre o time",
               "deadline": "2026-07-30",
               "startedAt": "2026-04-22",
-              "concludedAt": null,
+              "concludedAt": "2026-07-05",
               "description": "BIUD TALKs - Temas com foco em IA\n",
               "evidences": [
                 {
                   "type": "link",
                   "value": "https://qa.biud.com.br/index.html#biud-talks",
                   "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "texto",
+                  "value": "Contemplado nos BIUD Talks e alinhamentos técnicos internos.",
+                  "addedAt": "2026-08-05"
                 }
               ]
             },
@@ -383,10 +399,10 @@
             {
               "id": "O2K1A1",
               "title": "Garantir confiabilidade dos dados nas 3 esferas (interno, Sebrae, MPEs)",
-              "deadline": null,
-              "startedAt": null,
+              "deadline": "2026-09-30",
+              "startedAt": "2026-06-01",
               "concludedAt": null,
-              "description": "",
+              "description": "Projeto de Sanitização da base e Refatoração do banco",
               "evidences": []
             },
             {
