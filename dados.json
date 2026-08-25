@@ -1,6 +1,6 @@
 {
  "version": 1,
- "lastUpdated": "2026-08-25T12:00:00.000Z",
+ "lastUpdated": "2026-08-25T13:30:00.000Z",
  "auth": {
   "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
   "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
@@ -277,37 +277,43 @@
      "metricTarget": "Dashboard ativo + atualização semanal",
      "baselineNote": "",
      "metricBaseline": "",
-     "metricCurrent": "55% — replanejado 30/09 (sem avanço desde 05/08)",
+     "metricCurrent": "65% — reapurado 25/08 (escopo sem dashboards, movidos p/ TEC-O3); replanejado 30/09",
      "compliance": "sem",
      "concludedAt": null,
-     "description": "CAMINHO MAIS CURTO (recomendado): com Kanban, o Jira já entrega os gráficos prontos no board — não precisa construir painel a partir do banco. Basta configurar as colunas e salvar três filtros:\n1) volume entregue: project = BT AND statusCategory = Done AND resolutiondate >= -30d ORDER BY resolutiondate DESC\n2) urgências: project = BT AND priority = Highest AND statusCategory = Done AND resolutiondate >= -30d\n3) o mais importante, o que está parado há mais tempo: project = BT AND statusCategory = \"In Progress\" ORDER BY created ASC\nFiltro salvo tem link fixo e serve de evidência. Vencido desde 30/06 com nenhuma das 3 iniciativas iniciada.\n\nATUALIZAÇÃO 25/08/2026: sem avanço — 55%, pendente automação (GitHub Actions) + 4 semanas de série histórica. RISCO: campo resolution sem preenchimento desde ago/2026; automação deve apurar conclusão pela data de mudança de coluna ou o board deve ser corrigido.",
+     "description": "CAMINHO MAIS CURTO (recomendado): com Kanban, o Jira já entrega os gráficos prontos no board — não precisa construir painel a partir do banco. Basta configurar as colunas e salvar três filtros:\n1) volume entregue: project = BT AND statusCategory = Done AND resolutiondate >= -30d ORDER BY resolutiondate DESC\n2) urgências: project = BT AND priority = Highest AND statusCategory = Done AND resolutiondate >= -30d\n3) o mais importante, o que está parado há mais tempo: project = BT AND statusCategory = \"In Progress\" ORDER BY created ASC\nFiltro salvo tem link fixo e serve de evidência. Vencido desde 30/06 com nenhuma das 3 iniciativas iniciada.\n\nATUALIZAÇÃO 25/08/2026: sem avanço — 55%, pendente automação (GitHub Actions) + 4 semanas de série histórica. RISCO: campo resolution sem preenchimento desde ago/2026; automação deve apurar conclusão pela data de mudança de coluna ou o board deve ser corrigido.\n\nREVISÃO DE ESCOPO 25/08/2026: iniciativa de dashboards direto do banco movida para O3K1A2. Escopo remanescente: automação da extração (script pronto, falta agendamento) + centralização via Portal da Governança + 4 semanas de série histórica. REAPURAÇÃO 25/08/2026 — escopo sem os dashboards direto do banco (movidos p/ TEC-O3): painel downstream publicado com 4 indicadores = 30/30 · regras de apuração documentadas (item × subitem, régua registrada) = 20/20 · automação da atualização semanal = 15/30 (script de extração pronto; falta agendamento GitHub Actions e publicação recorrente) · série histórica de 4 semanas preservada = 0/20. Total: 65%.",
      "evidences": [],
      "acts": [
       {
        "id": "O1K4A1",
        "title": "Automatizar extração de dados do ClickUp/Jira",
        "deadline": null,
-       "startedAt": null,
+       "startedAt": "2026-08-05",
        "concludedAt": null,
-       "description": "",
+       "description": "\n\n25/08/2026: script de extração do Jira já construído (sessão anterior). Pendente: agendamento automático (GitHub Actions) e publicação recorrente.",
        "evidences": []
       },
       {
        "id": "O1K4A2",
        "title": "Centralizar informações de andamento de Tecnologia",
        "deadline": null,
-       "startedAt": null,
+       "startedAt": "2026-08-25",
        "concludedAt": null,
-       "description": "",
-       "evidences": []
+       "description": "\n\n25/08/2026: em andamento via Portal da Governança.",
+       "evidences": [
+        {
+         "type": "link",
+         "value": "https://portal.biud.com.br/areas/tech",
+         "addedAt": "2026-08-25"
+        }
+       ]
       },
       {
        "id": "O1K4A3",
-       "title": "Construir dashboards consumidos diretamente do banco de dados",
+       "title": "[MOVIDA → TEC-O3/KR1] Construir dashboards consumidos diretamente do banco de dados",
        "deadline": null,
        "startedAt": null,
-       "concludedAt": null,
-       "description": "",
+       "concludedAt": "2026-08-25",
+       "description": "\n\n25/08/2026: escopo transferido para O3K1A2 (dashboards Power BI — 2 de 5 entregues). Encerrada aqui para preservar histórico; acompanhamento passa a ser no TEC-O3.",
        "evidences": []
       }
      ]
