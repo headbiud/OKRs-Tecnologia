@@ -1,734 +1,734 @@
 {
- "version": 1,
- "lastUpdated": "2026-08-25T13:30:00.000Z",
- "auth": {
-  "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
-  "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
- },
- "objectives": [
-  {
-   "id": "O1",
-   "code": "TEC-O1",
-   "title": "Garantir previsibilidade, qualidade e velocidade das entregas",
-   "owner": "Gustavo (Head Tecnologia)",
-   "krs": [
-    {
-     "id": "O1K1",
-     "n": "KR1",
-     "title": "Atender 85% dos pedidos urgentes em até 4 dias",
-     "cadeira": "Head Tech + PM",
-     "deadline": "2026-12-31",
-     "deadlineLabel": "vigente a partir de 01/09/2026, até",
-     "continuous": true,
-     "metricTarget": "85% dos pedidos urgentes em até 4 dias corridos",
-     "baselineNote": "Ponto de partida medido no Jira em 05/08/2026, sobre 50 pedidos urgentes concluídos entre 31/03 e 27/07/2026. Número extraído do modelo de sprint; será reajustado após 8 semanas de fluxo Kanban estável.",
-     "metricBaseline": "70%",
-     "metricCurrent": "70% — ago/26 sem demanda urgente válida (fila vazia)",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "Substitui o antigo resultado de desvio de sprint, que deixou de existir com a mudança para Kanban: sem sprint, não há desvio de sprint para medir.\n\nPONTO DE PARTIDA: 70%. Metade dos pedidos urgentes saiu em 2 dias; os mais demorados levaram 11 dias. Ou seja, o time é rápido na maioria dos casos — o problema é a minoria que trava. O que destrava não é correr mais, é reduzir a quantidade de coisas abertas ao mesmo tempo. Por isso o limite de itens abertos entra no playbook.\n\nO QUE CONTA COMO URGENTE: card pequeno (Bug, Sub-bug ou Tarefa) marcado como Highest no Jira. Épico nunca é urgente, porque épico representa uma jornada inteira. Se épico entrar como urgente, o indicador cai de 70% para 43% e deixa de medir o que interessa. Só o Head Tech ou o PM pode marcar algo como urgente.\n\nTETO: no máximo 20% do que o time entrega por mês pode ser urgente. Em julho foi 10,6%, e vem caindo (abr 23,7% / mai 16,9% / jun 15,5% / jul 10,6%) — o teto está confortável.\n\nCAMINHO: 80% em outubro, 85% em novembro e dezembro.\n\nATUALIZAÇÃO 25/08/2026: agosto sem demanda urgente — zero cards válidos criados ou abertos no mês. Teto de urgências ~5% (1 de 20 entregas): abr 23,7% → mai 16,9% → jun 15,5% → jul 10,6% → ago ~5%. Régua validada contra o histórico: cards pequenos + Highest reproduz o baseline (68%≈70%); todo Highest daria 41%. Apuração de conclusão passa a usar a data de mudança para as colunas Pronto p/ deploy PROD / Itens concluídos (campo resolution sem preenchimento pelo board desde ago/2026 — 143 resoluções em jul, 0 em ago).",
-     "evidences": [
-      {
-       "type": "link",
-       "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
-       "addedAt": "2026-08-05"
-      },
-      {
-       "type": "texto",
-       "value": "Filtro de urgências: project = BT AND priority = Highest AND statusCategory = Done AND resolutiondate >= -30d",
-       "addedAt": "2026-08-05"
-      },
-      {
-       "type": "texto",
-       "value": "Verificação 25/08/2026 via API Jira: 0 urgentes válidos em agosto; teto 1/20 (~5%); régua cards pequenos+Highest reproduz baseline (68%) vs 41% da régua ampla.",
-       "addedAt": "2026-08-25"
-      }
-     ],
-     "acts": [
-      {
-       "id": "O1K1A1",
-       "title": "Criar e documentar playbook interno de engenharia",
-       "deadline": null,
-       "startedAt": "2026-03-10",
-       "concludedAt": "2026-05-31",
-       "description": "Documentação do projeto completa no Github e com evoluções e atualizações constantes. \n\n\n\nRegistrar que a atualização já cobre o fluxo Kanban: política de puxada, classes urgente e normal, e limite de itens abertos ao mesmo tempo.",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://github.com/biudtech/docs/tree/develop",
-         "addedAt": "2026-06-17"
-        }
-       ]
-      },
-      {
-       "id": "O1K1A2",
-       "title": "Padronizar ciclo de desenvolvimento e conceito de pronto",
-       "deadline": null,
-       "startedAt": "2026-03-03",
-       "concludedAt": "2026-03-30",
-       "description": "Processo definido em março. Existe uma constante adaptação a partir da necessidade. É um processo mutável, mas bem estabilizado. \n\nO conceito de pronto continua valendo; o ciclo de sprint não. Inserir a evidência atualizada.",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://docs.google.com/presentation/d/1NHn24GG1WRQ2pzue91W2gJ3RGFV05K7D/edit?usp=sharing&ouid=109151242171566476843&rtpof=true&sd=true",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O1K1A3",
-       "title": "Identificar e publicar capacidade real do time",
-       "deadline": "2026-09-30",
-       "startedAt": "2026-05-28",
-       "concludedAt": null,
-       "description": "Está em andamento. Iniciamos o processo de IA first que está sendo analisado a partir do primeiro escopo de projeto definido. \n\nPrazo alterado de 31/07 para 30/09/2026 em 05/08/2026. Motivo: capacidade real em Kanban é volume entregue por semana mais o limite de itens abertos ao mesmo tempo, e isso exige cerca de 8 semanas de fluxo depois da virada do board. O prazo anterior foi definido sob a premissa de sprint, que deixou de existir.",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://acr.lekto.com.br/ops/dashboard",
-         "addedAt": "2026-06-11"
-        },
-        {
-         "type": "link",
-         "value": "https://drive.google.com/drive/folders/11Xannc-6rsZuP_rAtR0X66LrixKYGF-o?usp=sharing",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O1K1A4",
-       "title": "Medir no Jira o ponto de partida de urgências e de tempo de entrega",
-       "deadline": null,
-       "startedAt": "2026-08-05",
-       "concludedAt": "2026-08-05",
-       "description": "Foram analisados 618 itens concluídos no board BT/101 entre 31/03 e 27/07/2026.\n\nResultados: 70% dos pedidos urgentes em até 4 dias (50 casos, metade em 2 dias); 8 de cada 10 itens em até 17,6 dias contando da abertura do card; 9 jornadas com metade dos casos em até 41 dias e as mais longas em 56 dias.\n\nObservação obrigatória: números extraídos do modelo de sprint e serão reajustados após 8 semanas de fluxo Kanban estável.",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
-         "addedAt": "2026-08-05"
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": "O1K2",
-     "n": "KR2",
-     "title": "Publicar o tempo de entrega por jornada e definir a meta até 30/11/2026",
-     "cadeira": "Head Tech",
-     "deadline": "2026-11-30",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "Tempo por jornada publicado mensalmente e meta definida até 30/11/2026",
-     "baselineNote": "Referência de 9 jornadas concluídas entre março e julho de 2026: metade levou até 41 dias, as mais longas 56 dias. Com apenas 9 casos, serve para planejar e NÃO serve como meta.",
-     "metricBaseline": "41 dias por jornada (metade dos casos, 9 jornadas medidas)",
-     "metricCurrent": "41 dias por jornada",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "POR QUE MUDOU: o resultado anterior pedia reduzir 25% do tempo de entrega, mas nunca teve ponto de partida registrado, e a mudança para Kanban trocou o sistema de entrega no meio do caminho. Comparar antes e depois de sistemas diferentes não se sustenta. Além disso, a unidade de entrega passou a ser a JORNADA, não o card — medir card já não responde a pergunta do Produto, que é 'quando sai a próxima jornada?'.\n\nTETO JÁ CONHECIDO: contando da abertura do card até a conclusão, 8 de cada 10 itens saem em até 17,6 dias (618 itens medidos). É um teto, não a meta — inclui o tempo em que o card ficou parado na fila antes de alguém começar.\n\nO QUE FALTA: passar a medir a partir do momento em que o time realmente começa o trabalho. O Jira faz isso sozinho no relatório do board, depois que as colunas do Kanban estiverem definidas. Com 8 semanas de fluxo estável, a meta é declarada até 30/11.\n\nCRITÉRIO HERDADO: o resultado de páginas críticas abaixo de 2 segundos foi excluído em 05/08/2026, porque a refatoração das jornadas passa a tratar performance. Para a exigência não desaparecer, carregamento abaixo de 2 segundos passa a ser critério de aceite de CADA jornada refatorada, verificado no momento da entrega.",
-     "evidences": [
-      {
-       "type": "link",
-       "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
-       "addedAt": "2026-08-05"
-      }
-     ],
-     "acts": [
-      {
-       "id": "O1K2A1",
-       "title": "Mapear gargalos no fluxo de desenvolvimento",
-       "deadline": null,
-       "startedAt": "2026-03-03",
-       "concludedAt": null,
-       "description": "Primeiro gargalo: Time sem processo de desenvolvimento estabelecido\nSegundo gargalo: Desenvolvimento sem processo de Revisão de Código\nTerceiro gargalo: Processos de QA em estruturação\n\nKR em constante evolução a partir de implementação de melhoria de processos. ",
-       "evidences": []
-      },
-      {
-       "id": "O1K2A2",
-       "title": "Implementar projeto de IA First para melhoria da qualidade de desenvolvimento",
-       "deadline": null,
-       "startedAt": "2026-05-26",
-       "concludedAt": "2026-06-11",
-       "description": "Primeira sprint no modelo IA First iniciada em 28/05/2026",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://drive.google.com/drive/folders/11Xannc-6rsZuP_rAtR0X66LrixKYGF-o?usp=sharing",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O1K2A3",
-       "title": "[DESCARTADA] Criar métrica de tokens de IA para medir ganho de velocidade",
-       "deadline": null,
-       "startedAt": "2026-06-24",
-       "concludedAt": "2026-06-24",
-       "description": "Métrica não será medida. \n\nAnalisar Tokens de IA não é medição de velocidade. Vários estudos apontam que é uma forma falha de medição e que não traz apontamentos reais de produtividade a partir do quantitativo de tokens ao invés de analisar a saída e resultados entregues. \n\nIremos medir os processos via GSD e evoluções de entregas a partir do aumento da capacidade de entrega do time",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://www.startse.com/artigos/tokenmaxxing/",
-         "addedAt": "2026-06-24"
-        },
-        {
-         "type": "link",
-         "value": "https://getdx.com/blog/ai-measurement-hub/",
-         "addedAt": "2026-06-24"
-        },
-        {
-         "type": "link",
-         "value": "https://coletivo.tech/artigos/cezar-taurion-tokenmaxxing-metrica-produtividade-ia/",
-         "addedAt": "2026-06-24"
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": "O1K3",
-     "n": "KR3",
-     "title": "Reduzir bugs em produção em pelo menos 35% até out/2026",
-     "cadeira": "Head Tech + QA",
-     "deadline": "2026-10-31",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "−35% vs baseline",
-     "baselineNote": "Δ baseline medida até 27/mar Referência medida no Jira em 05/08/2026: 70 bugs concluídos entre 31/03 e 27/07/2026, cerca de 4 por semana, metade resolvida em 2 dias. Registrar de quanto para quanto — hoje o resultado afirma -35% sem ter registrado o ponto de partida.",
-     "metricBaseline": "",
-     "metricCurrent": "37 em jul (reapurado) · 7 em ago até 25/08 — meta 8/mês",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "RÉGUA OFICIAL (25/08/2026): bugs CRIADOS no mês no projeto BUGS do Jira. Julho reapurado de 32 para 37 — valor anterior contava só concluídos (incentivo invertido: indicador melhorava quando a correção demorava).\n\nSÉRIE: mai 4 · jun 20 · jul 37 · ago 7 (até 25/08). Ponto de partida: 12/mês (média mai-jun). Meta: ≤8/mês.\n\nAGOSTO: queda forte contra julho. Ressalvas: BUGS-81/82/83 possivelmente triplicata do mesmo bug do Emissor de NF (verificar com QA; se confirmado, agosto real = 5); mês não fechou.\n\nQUALIDADE: 9 casos automatizados concluídos (Autenticação 2, Onboarding 5, Jornada ESG 2), 13 em automação (11 UI + 2 API), RCA em implantação, BIUD Talks ativo.",
-     "evidences": [
-      {
-       "type": "link",
-       "value": "https://qa.biud.com.br/",
-       "addedAt": "2026-06-11"
-      },
-      {
-       "type": "texto",
-       "value": "JQL oficial: project = BUGS AND created >= <início do mês> AND created < <início do mês seguinte>. Contagem 25/08 via API: mai 4, jun 20, jul 37, ago 7.",
-       "addedAt": "2026-08-25"
-      }
-     ],
-     "acts": [
-      {
-       "id": "O1K3A1",
-       "title": "Padronizar critérios de teste baseados em regras de negócio com IA",
-       "deadline": null,
-       "startedAt": "2026-07-24",
-       "concludedAt": "2026-07-24",
-       "description": "",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://biudtecnologia.atlassian.net/wiki/spaces/BT/folder/40501250?atlOrigin=eyJpIjoiNzU2YTY0NDI1ZTk1NDM3NmJjOThkZDhmYmIxODIwYzciLCJwIjoiYyJ9",
-         "addedAt": "2026-08-05"
-        }
-       ]
-      },
-      {
-       "id": "O1K3A2",
-       "title": "Implementar esteira de qualidade automatizada",
-       "deadline": null,
-       "startedAt": "2026-04-28",
-       "concludedAt": null,
-       "description": "Estratégia e Implementação da Automação de Testes iniciada em 28/04 a partir de um projeto mapeado no JIRA com atividades constantes do Rogério. \n\n",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://biudtecnologia.atlassian.net/browse/BT-240?atlOrigin=eyJpIjoiMzNjNjhhNTAwNjU5NDc5YWJlZDVlMjZiNjU3OWI3MWEiLCJwIjoiaiJ9",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O1K3A3",
-       "title": "Implementar testes automatizados nas principais jornadas",
-       "deadline": null,
-       "startedAt": "2026-05-01",
-       "concludedAt": "2026-07-24",
-       "description": "Automações de casos de tstes nos principais fluxos iniciada e em andamento. Atualmente tivemos os seguintes casos automatizados:\n\nAté o momento está finalizado, mas é uma atividade em constante evolução. \n\nCaso de Teste\tTipo\tStatus\n🔐 Autenticação  ·  2 casos\nLogin com Autenticação AMEI\tUI\t✅ Feito\nLogout do Sistema\tUI\t✅ Feito\n🏁 Onboarding  ·  5 casos\nSeleção de Empresa\tUI\t✅ Feito\nCarregamento do Dashboard Inicial\tUI\t✅ Feito\nNavegação pelo Menu Lateral\tUI\t✅ Feito\nValidação de Porte na Seleção CPE (ME/EPP/MEI)\tUI\t✅ Feito\nPersistência de Dados no Cadastro\tUI\t✅ Feito\n🌱 Jornada ESG  ·  2 casos\nAcesso ao Questionário de Diagnóstico\tUI\t✅ Feito\nNavegação entre Perguntas do Questionário\tUI\t✅ Feito\n\n25/08/2026: 9 casos concluídos, 13 em automação (portal QA).",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://qa.biud.com.br/index.html#sprint",
-         "addedAt": "2026-06-11"
-        },
-        {
-         "type": "link",
-         "value": "https://biudtecnologia.atlassian.net/wiki/spaces/BT/pages/40337451/Documenta+o+de+QA+ndice+Geral#Testes-Automatizados",
-         "addedAt": "2026-08-05"
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": "O1K4",
-     "n": "KR4",
-     "title": "Ter painel de indicadores ágeis ativo e atualizado semanalmente até jun/2026",
-     "cadeira": "PM (Lucas)",
-     "deadline": "2026-06-30",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "Dashboard ativo + atualização semanal",
-     "baselineNote": "",
-     "metricBaseline": "",
-     "metricCurrent": "65% — reapurado 25/08 (escopo sem dashboards, movidos p/ TEC-O3); replanejado 30/09",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "CAMINHO MAIS CURTO (recomendado): com Kanban, o Jira já entrega os gráficos prontos no board — não precisa construir painel a partir do banco. Basta configurar as colunas e salvar três filtros:\n1) volume entregue: project = BT AND statusCategory = Done AND resolutiondate >= -30d ORDER BY resolutiondate DESC\n2) urgências: project = BT AND priority = Highest AND statusCategory = Done AND resolutiondate >= -30d\n3) o mais importante, o que está parado há mais tempo: project = BT AND statusCategory = \"In Progress\" ORDER BY created ASC\nFiltro salvo tem link fixo e serve de evidência. Vencido desde 30/06 com nenhuma das 3 iniciativas iniciada.\n\nATUALIZAÇÃO 25/08/2026: sem avanço — 55%, pendente automação (GitHub Actions) + 4 semanas de série histórica. RISCO: campo resolution sem preenchimento desde ago/2026; automação deve apurar conclusão pela data de mudança de coluna ou o board deve ser corrigido.\n\nREVISÃO DE ESCOPO 25/08/2026: iniciativa de dashboards direto do banco movida para O3K1A2. Escopo remanescente: automação da extração (script pronto, falta agendamento) + centralização via Portal da Governança + 4 semanas de série histórica. REAPURAÇÃO 25/08/2026 — escopo sem os dashboards direto do banco (movidos p/ TEC-O3): painel downstream publicado com 4 indicadores = 30/30 · regras de apuração documentadas (item × subitem, régua registrada) = 20/20 · automação da atualização semanal = 15/30 (script de extração pronto; falta agendamento GitHub Actions e publicação recorrente) · série histórica de 4 semanas preservada = 0/20. Total: 65%.",
-     "evidences": [],
-     "acts": [
-      {
-       "id": "O1K4A1",
-       "title": "Automatizar extração de dados do ClickUp/Jira",
-       "deadline": null,
-       "startedAt": "2026-08-05",
-       "concludedAt": null,
-       "description": "\n\n25/08/2026: script de extração do Jira já construído (sessão anterior). Pendente: agendamento automático (GitHub Actions) e publicação recorrente.",
-       "evidences": []
-      },
-      {
-       "id": "O1K4A2",
-       "title": "Centralizar informações de andamento de Tecnologia",
-       "deadline": null,
-       "startedAt": "2026-08-25",
-       "concludedAt": null,
-       "description": "\n\n25/08/2026: em andamento via Portal da Governança.",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://portal.biud.com.br/areas/tech",
-         "addedAt": "2026-08-25"
-        }
-       ]
-      },
-      {
-       "id": "O1K4A3",
-       "title": "[MOVIDA → TEC-O3/KR1] Construir dashboards consumidos diretamente do banco de dados",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": "2026-08-25",
-       "description": "\n\n25/08/2026: escopo transferido para O3K1A2 (dashboards Power BI — 2 de 5 entregues). Encerrada aqui para preservar histórico; acompanhamento passa a ser no TEC-O3.",
-       "evidences": []
-      }
-     ]
-    },
-    {
-     "id": "O1K5",
-     "n": "KR5",
-     "title": "100% do time treinado e utilizando IA no ciclo de desenvolvimento",
-     "cadeira": "Head Tech",
-     "deadline": "2026-05-31",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "100% do time",
-     "baselineNote": "Documento diverge: título diz jun/26, meta diz mai/26 — adotado mai/26 (edite o prazo se a data oficial for jun)",
-     "metricBaseline": "",
-     "metricCurrent": "",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "PARA FECHAR ESTE RESULTADO: o que ele promete é o time USANDO IA, não o time presente em workshop. A prova de uso está em acr.lekto.com.br/admin/overview (adoção de revisão automática de código por pessoa). Anexe esse número como evidência e o resultado fecha em agosto.",
-     "evidences": [],
-     "acts": [
-      {
-       "id": "O1K5A1",
-       "title": "[DESCARTADA] Realizar workshops internos de IA por área",
-       "deadline": "2026-07-30",
-       "startedAt": "2026-04-22",
-       "concludedAt": "2026-08-05",
-       "description": "DESCARTADA em 05/08/2026, não excluída. Nunca foi feita por área: o processo iniciado foi de workshops internos gerais, incluindo IA, e acabou substituído pelo BIUD Talks. Registrar o motivo preserva o histórico da decisão em vez de apagar a iniciativa.\n\nTexto original: Iniciado o processo de workshops internos gerais, incluindo IA.",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://qa.biud.com.br/index.html#biud-talks",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O1K5A2",
-       "title": "Compartilhar metodologias e melhores práticas entre o time",
-       "deadline": "2026-07-30",
-       "startedAt": "2026-04-22",
-       "concludedAt": "2026-07-05",
-       "description": "BIUD TALKs - Temas com foco em IA\n",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://qa.biud.com.br/index.html#biud-talks",
-         "addedAt": "2026-06-11"
-        },
-        {
-         "type": "texto",
-         "value": "Contemplado nos BIUD Talks e alinhamentos técnicos internos.",
-         "addedAt": "2026-08-05"
-        }
-       ]
-      },
-      {
-       "id": "O1K5A3",
-       "title": "Criar guia de ferramenta ideal para cada etapa do ciclo de desenvolvimento",
-       "deadline": null,
-       "startedAt": "2026-04-01",
-       "concludedAt": "2026-05-26",
-       "description": "Criação de estrutura de GSD e utilização de ACR - Code review automatizado, para o fluxo de desenvolvimento. \n\nCriamos um Guia de ferramenta para o fluxo de desenvolvimento a partir do modelo IA Fist. ",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://acr.lekto.com.br/admin/overview",
-         "addedAt": "2026-06-24"
-        },
-        {
-         "type": "link",
-         "value": "https://github.com/biudtech/docs",
-         "addedAt": "2026-06-24"
-        }
-       ]
-      },
-      {
-       "id": "O1K5A4",
-       "title": "Implementar TecWeek — apresentações internas de tecnologia",
-       "deadline": null,
-       "startedAt": "2026-04-22",
-       "concludedAt": "2026-04-22",
-       "description": "Implementação do BIUD TALKS",
-       "evidences": [
-        {
-         "type": "link",
-         "value": "https://qa.biud.com.br/index.html#biud-talks",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      }
-     ]
-    }
-   ]
+  "version": 1,
+  "lastUpdated": "2026-08-26T00:34:47.749Z",
+  "auth": {
+    "a": "3c513cd2151117096ddd211c5085f93ebc89e9566b5cdfa2443489da5795b588",
+    "v": "b35b1c424d94a7b0a44224e9baf1e019245350cc4448c2c8d11142e91f0234b8"
   },
-  {
-   "id": "O2",
-   "code": "TEC-O2",
-   "title": "Garantir integridade, segurança e performance da plataforma",
-   "owner": "Gustavo (Head Tecnologia)",
-   "krs": [
+  "objectives": [
     {
-     "id": "O2K1",
-     "n": "KR1",
-     "title": "Manter disponibilidade da plataforma acima de 99,5% a partir de jun/2026",
-     "cadeira": "Head Tech + DevOps",
-     "deadline": "2026-06-30",
-     "deadlineLabel": "vigente a partir de",
-     "continuous": true,
-     "metricTarget": "≥ 99,5% uptime",
-     "baselineNote": "",
-     "metricBaseline": "99,5%",
-     "metricCurrent": "99,88%",
-     "compliance": "dentro",
-     "concludedAt": null,
-     "description": "Criado um painel de monitoramento com todos os itens e aplicações que estão ligadas direta ou indiretamente na plataforma, considerando todos os ambientes: \nDEV, HMG e PROD\n\n25/08/2026: 99,88% (Uptime Kuma) — acima da meta de 99,5%.",
-     "evidences": [
-      {
-       "type": "link",
-       "value": "https://availability.biud.com.br/dashboard?",
-       "addedAt": "2026-06-11"
-      }
-     ],
-     "acts": [
-      {
-       "id": "O2K1A1",
-       "title": "Garantir confiabilidade dos dados nas 3 esferas (interno, Sebrae, MPEs)",
-       "deadline": "2026-09-30",
-       "startedAt": "2026-06-01",
-       "concludedAt": null,
-       "description": "Projeto de Sanitização da base e Refatoração do banco",
-       "evidences": []
-      },
-      {
-       "id": "O2K1A2",
-       "title": "Implementar monitoramento de infra com alertas automatizados",
-       "deadline": null,
-       "startedAt": "2026-04-08",
-       "concludedAt": "2026-04-30",
-       "description": "Monitoramento de infra:\n\n- Geração de alertas diretamente integrada com o Discord - Canal oficial de comunicação do time de Tecnologia. ",
-       "evidences": [
+      "id": "O1",
+      "code": "TEC-O1",
+      "title": "Garantir previsibilidade, qualidade e velocidade das entregas",
+      "owner": "Gustavo (Head Tecnologia)",
+      "krs": [
         {
-         "type": "link",
-         "value": "https://availability.biud.com.br/dashboard",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O2K1A3",
-       "title": "Externalizar informações de infraestrutura para visibilidade",
-       "deadline": null,
-       "startedAt": "2026-04-30",
-       "concludedAt": "2026-06-11",
-       "description": "",
-       "evidences": [
+          "id": "O1K1",
+          "n": "KR1",
+          "title": "Atender 85% dos pedidos urgentes em até 4 dias",
+          "cadeira": "Head Tech + PM",
+          "deadline": "2026-12-31",
+          "deadlineLabel": "vigente a partir de 01/09/2026, até",
+          "continuous": true,
+          "metricTarget": "85% dos pedidos urgentes em até 4 dias corridos",
+          "baselineNote": "Ponto de partida medido no Jira em 05/08/2026, sobre 50 pedidos urgentes concluídos entre 31/03 e 27/07/2026. Número extraído do modelo de sprint; será reajustado após 8 semanas de fluxo Kanban estável.",
+          "metricBaseline": "70%",
+          "metricCurrent": "70% — ago/26 sem demanda urgente válida (fila vazia)",
+          "compliance": "dentro",
+          "concludedAt": null,
+          "description": "Substitui o antigo resultado de desvio de sprint, que deixou de existir com a mudança para Kanban: sem sprint, não há desvio de sprint para medir.\n\nPONTO DE PARTIDA: 70%. Metade dos pedidos urgentes saiu em 2 dias; os mais demorados levaram 11 dias. Ou seja, o time é rápido na maioria dos casos — o problema é a minoria que trava. O que destrava não é correr mais, é reduzir a quantidade de coisas abertas ao mesmo tempo. Por isso o limite de itens abertos entra no playbook.\n\nO QUE CONTA COMO URGENTE: card pequeno (Bug, Sub-bug ou Tarefa) marcado como Highest no Jira. Épico nunca é urgente, porque épico representa uma jornada inteira. Se épico entrar como urgente, o indicador cai de 70% para 43% e deixa de medir o que interessa. Só o Head Tech ou o PM pode marcar algo como urgente.\n\nTETO: no máximo 20% do que o time entrega por mês pode ser urgente. Em julho foi 10,6%, e vem caindo (abr 23,7% / mai 16,9% / jun 15,5% / jul 10,6%) — o teto está confortável.\n\nCAMINHO: 80% em outubro, 85% em novembro e dezembro.\n\nATUALIZAÇÃO 25/08/2026: agosto sem demanda urgente — zero cards válidos criados ou abertos no mês. Teto de urgências ~5% (1 de 20 entregas): abr 23,7% → mai 16,9% → jun 15,5% → jul 10,6% → ago ~5%. Régua validada contra o histórico: cards pequenos + Highest reproduz o baseline (68%≈70%); todo Highest daria 41%. Apuração de conclusão passa a usar a data de mudança para as colunas Pronto p/ deploy PROD / Itens concluídos (campo resolution sem preenchimento pelo board desde ago/2026 — 143 resoluções em jul, 0 em ago).",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
+              "addedAt": "2026-08-05"
+            },
+            {
+              "type": "texto",
+              "value": "Filtro de urgências: project = BT AND priority = Highest AND statusCategory = Done AND resolutiondate >= -30d",
+              "addedAt": "2026-08-05"
+            },
+            {
+              "type": "texto",
+              "value": "Verificação 25/08/2026 via API Jira: 0 urgentes válidos em agosto; teto 1/20 (~5%); régua cards pequenos+Highest reproduz baseline (68%) vs 41% da régua ampla.",
+              "addedAt": "2026-08-25"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O1K1A1",
+              "title": "Criar e documentar playbook interno de engenharia",
+              "deadline": null,
+              "startedAt": "2026-03-10",
+              "concludedAt": "2026-05-31",
+              "description": "Documentação do projeto completa no Github e com evoluções e atualizações constantes. \n\n\n\nRegistrar que a atualização já cobre o fluxo Kanban: política de puxada, classes urgente e normal, e limite de itens abertos ao mesmo tempo.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://github.com/biudtech/docs/tree/develop",
+                  "addedAt": "2026-06-17"
+                }
+              ]
+            },
+            {
+              "id": "O1K1A2",
+              "title": "Padronizar ciclo de desenvolvimento e conceito de pronto",
+              "deadline": null,
+              "startedAt": "2026-03-03",
+              "concludedAt": "2026-03-30",
+              "description": "Processo definido em março. Existe uma constante adaptação a partir da necessidade. É um processo mutável, mas bem estabilizado. \n\nO conceito de pronto continua valendo; o ciclo de sprint não. Inserir a evidência atualizada.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/presentation/d/1NHn24GG1WRQ2pzue91W2gJ3RGFV05K7D/edit?usp=sharing&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K1A3",
+              "title": "Identificar e publicar capacidade real do time",
+              "deadline": "2026-09-30",
+              "startedAt": "2026-05-28",
+              "concludedAt": null,
+              "description": "Está em andamento. Iniciamos o processo de IA first que está sendo analisado a partir do primeiro escopo de projeto definido. \n\nPrazo alterado de 31/07 para 30/09/2026 em 05/08/2026. Motivo: capacidade real em Kanban é volume entregue por semana mais o limite de itens abertos ao mesmo tempo, e isso exige cerca de 8 semanas de fluxo depois da virada do board. O prazo anterior foi definido sob a premissa de sprint, que deixou de existir.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://acr.lekto.com.br/ops/dashboard",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://drive.google.com/drive/folders/11Xannc-6rsZuP_rAtR0X66LrixKYGF-o?usp=sharing",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K1A4",
+              "title": "Medir no Jira o ponto de partida de urgências e de tempo de entrega",
+              "deadline": null,
+              "startedAt": "2026-08-05",
+              "concludedAt": "2026-08-05",
+              "description": "Foram analisados 618 itens concluídos no board BT/101 entre 31/03 e 27/07/2026.\n\nResultados: 70% dos pedidos urgentes em até 4 dias (50 casos, metade em 2 dias); 8 de cada 10 itens em até 17,6 dias contando da abertura do card; 9 jornadas com metade dos casos em até 41 dias e as mais longas em 56 dias.\n\nObservação obrigatória: números extraídos do modelo de sprint e serão reajustados após 8 semanas de fluxo Kanban estável.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
+                  "addedAt": "2026-08-05"
+                }
+              ]
+            }
+          ]
+        },
         {
-         "type": "link",
-         "value": "https://availability.biud.com.br/dashboard",
-         "addedAt": "2026-06-11"
-        }
-       ]
-      },
-      {
-       "id": "O2K4A2",
-       "title": "Implementar monitoramento de latência (Up Time Kuma/DataDog)",
-       "deadline": null,
-       "startedAt": "2026-04-30",
-       "concludedAt": "2026-05-30",
-       "description": "Criação de dashboard de monitoramento incluindo notificações via Discord, WhatsApp e e-mail para o Guilherme Lima. \n\nMovida para este resultado em 05/08/2026, junto com a exclusão do resultado de páginas abaixo de 2 segundos. Monitoramento de latência pertence à mesma família de disponibilidade e infraestrutura, e a evidência fica preservada.",
-       "evidences": [
+          "id": "O1K2",
+          "n": "KR2",
+          "title": "Publicar o tempo de entrega por jornada e definir a meta até 30/11/2026",
+          "cadeira": "Head Tech",
+          "deadline": "2026-11-30",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "Tempo por jornada publicado mensalmente e meta definida até 30/11/2026",
+          "baselineNote": "Referência de 9 jornadas concluídas entre março e julho de 2026: metade levou até 41 dias, as mais longas 56 dias. Com apenas 9 casos, serve para planejar e NÃO serve como meta.",
+          "metricBaseline": "41 dias por jornada (metade dos casos, 9 jornadas medidas)",
+          "metricCurrent": "41 dias por jornada",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "POR QUE MUDOU: o resultado anterior pedia reduzir 25% do tempo de entrega, mas nunca teve ponto de partida registrado, e a mudança para Kanban trocou o sistema de entrega no meio do caminho. Comparar antes e depois de sistemas diferentes não se sustenta. Além disso, a unidade de entrega passou a ser a JORNADA, não o card — medir card já não responde a pergunta do Produto, que é 'quando sai a próxima jornada?'.\n\nTETO JÁ CONHECIDO: contando da abertura do card até a conclusão, 8 de cada 10 itens saem em até 17,6 dias (618 itens medidos). É um teto, não a meta — inclui o tempo em que o card ficou parado na fila antes de alguém começar.\n\nO QUE FALTA: passar a medir a partir do momento em que o time realmente começa o trabalho. O Jira faz isso sozinho no relatório do board, depois que as colunas do Kanban estiverem definidas. Com 8 semanas de fluxo estável, a meta é declarada até 30/11.\n\nCRITÉRIO HERDADO: o resultado de páginas críticas abaixo de 2 segundos foi excluído em 05/08/2026, porque a refatoração das jornadas passa a tratar performance. Para a exigência não desaparecer, carregamento abaixo de 2 segundos passa a ser critério de aceite de CADA jornada refatorada, verificado no momento da entrega.",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://biudtecnologia.atlassian.net/jira/software/c/projects/BT/boards/101",
+              "addedAt": "2026-08-05"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O1K2A1",
+              "title": "Mapear gargalos no fluxo de desenvolvimento",
+              "deadline": null,
+              "startedAt": "2026-03-03",
+              "concludedAt": null,
+              "description": "Primeiro gargalo: Time sem processo de desenvolvimento estabelecido\nSegundo gargalo: Desenvolvimento sem processo de Revisão de Código\nTerceiro gargalo: Processos de QA em estruturação\n\nKR em constante evolução a partir de implementação de melhoria de processos. ",
+              "evidences": []
+            },
+            {
+              "id": "O1K2A2",
+              "title": "Implementar projeto de IA First para melhoria da qualidade de desenvolvimento",
+              "deadline": null,
+              "startedAt": "2026-05-26",
+              "concludedAt": "2026-06-11",
+              "description": "Primeira sprint no modelo IA First iniciada em 28/05/2026",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://drive.google.com/drive/folders/11Xannc-6rsZuP_rAtR0X66LrixKYGF-o?usp=sharing",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K2A3",
+              "title": "[DESCARTADA] Criar métrica de tokens de IA para medir ganho de velocidade",
+              "deadline": null,
+              "startedAt": "2026-06-24",
+              "concludedAt": "2026-06-24",
+              "description": "Métrica não será medida. \n\nAnalisar Tokens de IA não é medição de velocidade. Vários estudos apontam que é uma forma falha de medição e que não traz apontamentos reais de produtividade a partir do quantitativo de tokens ao invés de analisar a saída e resultados entregues. \n\nIremos medir os processos via GSD e evoluções de entregas a partir do aumento da capacidade de entrega do time",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://www.startse.com/artigos/tokenmaxxing/",
+                  "addedAt": "2026-06-24"
+                },
+                {
+                  "type": "link",
+                  "value": "https://getdx.com/blog/ai-measurement-hub/",
+                  "addedAt": "2026-06-24"
+                },
+                {
+                  "type": "link",
+                  "value": "https://coletivo.tech/artigos/cezar-taurion-tokenmaxxing-metrica-produtividade-ia/",
+                  "addedAt": "2026-06-24"
+                }
+              ]
+            }
+          ]
+        },
         {
-         "type": "link",
-         "value": "https://status.biud.com.br/dashboard",
-         "addedAt": "2026-06-17"
+          "id": "O1K3",
+          "n": "KR3",
+          "title": "Reduzir bugs em produção em pelo menos 35% até out/2026",
+          "cadeira": "Head Tech + QA",
+          "deadline": "2026-10-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "−35% vs baseline",
+          "baselineNote": "Δ baseline medida até 27/mar Referência medida no Jira em 05/08/2026: 70 bugs concluídos entre 31/03 e 27/07/2026, cerca de 4 por semana, metade resolvida em 2 dias. Registrar de quanto para quanto — hoje o resultado afirma -35% sem ter registrado o ponto de partida.",
+          "metricBaseline": "",
+          "metricCurrent": "37 em jul (reapurado) · 7 em ago até 25/08 — meta 8/mês",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "RÉGUA OFICIAL (25/08/2026): bugs CRIADOS no mês no projeto BUGS do Jira. Julho reapurado de 32 para 37 — valor anterior contava só concluídos (incentivo invertido: indicador melhorava quando a correção demorava).\n\nSÉRIE: mai 4 · jun 20 · jul 37 · ago 7 (até 25/08). Ponto de partida: 12/mês (média mai-jun). Meta: ≤8/mês.\n\nAGOSTO: queda forte contra julho. Ressalvas: BUGS-81/82/83 possivelmente triplicata do mesmo bug do Emissor de NF (verificar com QA; se confirmado, agosto real = 5); mês não fechou.\n\nQUALIDADE: 9 casos automatizados concluídos (Autenticação 2, Onboarding 5, Jornada ESG 2), 13 em automação (11 UI + 2 API), RCA em implantação, BIUD Talks ativo.",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://qa.biud.com.br/",
+              "addedAt": "2026-06-11"
+            },
+            {
+              "type": "texto",
+              "value": "JQL oficial: project = BUGS AND created >= <início do mês> AND created < <início do mês seguinte>. Contagem 25/08 via API: mai 4, jun 20, jul 37, ago 7.",
+              "addedAt": "2026-08-25"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O1K3A1",
+              "title": "Padronizar critérios de teste baseados em regras de negócio com IA",
+              "deadline": null,
+              "startedAt": "2026-07-24",
+              "concludedAt": "2026-07-24",
+              "description": "",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/wiki/spaces/BT/folder/40501250?atlOrigin=eyJpIjoiNzU2YTY0NDI1ZTk1NDM3NmJjOThkZDhmYmIxODIwYzciLCJwIjoiYyJ9",
+                  "addedAt": "2026-08-05"
+                }
+              ]
+            },
+            {
+              "id": "O1K3A2",
+              "title": "Implementar esteira de qualidade automatizada",
+              "deadline": null,
+              "startedAt": "2026-04-28",
+              "concludedAt": null,
+              "description": "Estratégia e Implementação da Automação de Testes iniciada em 28/04 a partir de um projeto mapeado no JIRA com atividades constantes do Rogério. \n\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/browse/BT-240?atlOrigin=eyJpIjoiMzNjNjhhNTAwNjU5NDc5YWJlZDVlMjZiNjU3OWI3MWEiLCJwIjoiaiJ9",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K3A3",
+              "title": "Implementar testes automatizados nas principais jornadas",
+              "deadline": null,
+              "startedAt": "2026-05-01",
+              "concludedAt": "2026-07-24",
+              "description": "Automações de casos de tstes nos principais fluxos iniciada e em andamento. Atualmente tivemos os seguintes casos automatizados:\n\nAté o momento está finalizado, mas é uma atividade em constante evolução. \n\nCaso de Teste\tTipo\tStatus\n🔐 Autenticação  ·  2 casos\nLogin com Autenticação AMEI\tUI\t✅ Feito\nLogout do Sistema\tUI\t✅ Feito\n🏁 Onboarding  ·  5 casos\nSeleção de Empresa\tUI\t✅ Feito\nCarregamento do Dashboard Inicial\tUI\t✅ Feito\nNavegação pelo Menu Lateral\tUI\t✅ Feito\nValidação de Porte na Seleção CPE (ME/EPP/MEI)\tUI\t✅ Feito\nPersistência de Dados no Cadastro\tUI\t✅ Feito\n🌱 Jornada ESG  ·  2 casos\nAcesso ao Questionário de Diagnóstico\tUI\t✅ Feito\nNavegação entre Perguntas do Questionário\tUI\t✅ Feito\n\n25/08/2026: 9 casos concluídos, 13 em automação (portal QA).",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#sprint",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://biudtecnologia.atlassian.net/wiki/spaces/BT/pages/40337451/Documenta+o+de+QA+ndice+Geral#Testes-Automatizados",
+                  "addedAt": "2026-08-05"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "O1K4",
+          "n": "KR4",
+          "title": "Ter painel de indicadores ágeis ativo e atualizado semanalmente até jun/2026",
+          "cadeira": "PM (Lucas)",
+          "deadline": "2026-06-30",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "Dashboard ativo + atualização semanal",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "65% — reapurado 25/08 (escopo sem dashboards, movidos p/ TEC-O3); replanejado 30/09",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "CAMINHO MAIS CURTO (recomendado): com Kanban, o Jira já entrega os gráficos prontos no board — não precisa construir painel a partir do banco. Basta configurar as colunas e salvar três filtros:\n1) volume entregue: project = BT AND statusCategory = Done AND resolutiondate >= -30d ORDER BY resolutiondate DESC\n2) urgências: project = BT AND priority = Highest AND statusCategory = Done AND resolutiondate >= -30d\n3) o mais importante, o que está parado há mais tempo: project = BT AND statusCategory = \"In Progress\" ORDER BY created ASC\nFiltro salvo tem link fixo e serve de evidência. Vencido desde 30/06 com nenhuma das 3 iniciativas iniciada.\n\nATUALIZAÇÃO 25/08/2026: sem avanço — 55%, pendente automação (GitHub Actions) + 4 semanas de série histórica. RISCO: campo resolution sem preenchimento desde ago/2026; automação deve apurar conclusão pela data de mudança de coluna ou o board deve ser corrigido.\n\nREVISÃO DE ESCOPO 25/08/2026: iniciativa de dashboards direto do banco movida para O3K1A2. Escopo remanescente: automação da extração (script pronto, falta agendamento) + centralização via Portal da Governança + 4 semanas de série histórica. REAPURAÇÃO 25/08/2026 — escopo sem os dashboards direto do banco (movidos p/ TEC-O3): painel downstream publicado com 4 indicadores = 30/30 · regras de apuração documentadas (item × subitem, régua registrada) = 20/20 · automação da atualização semanal = 15/30 (script de extração pronto; falta agendamento GitHub Actions e publicação recorrente) · série histórica de 4 semanas preservada = 0/20. Total: 65%.",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O1K4A1",
+              "title": "Automatizar extração de dados do ClickUp/Jira",
+              "deadline": null,
+              "startedAt": "2026-08-05",
+              "concludedAt": null,
+              "description": "Script de extração do Jira já construído. Pendente: agendamento automático (GitHub Actions) e publicação recorrente.\n\n",
+              "evidences": []
+            },
+            {
+              "id": "O1K4A2",
+              "title": "Centralizar informações de andamento de Tecnologia",
+              "deadline": null,
+              "startedAt": "2026-08-25",
+              "concludedAt": null,
+              "description": "\nEm andamento via Portal da Governança.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://portal.biud.com.br/areas/tech",
+                  "addedAt": "2026-08-25"
+                }
+              ]
+            },
+            {
+              "id": "O1K4A3",
+              "title": "[MOVIDA → TEC-O3/KR1] Construir dashboards consumidos diretamente do banco de dados",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": "2026-08-25",
+              "description": "\n\n25/08/2026: escopo transferido para O3K1A2 (dashboards Power BI — 2 de 5 entregues). Encerrada aqui para preservar histórico; acompanhamento passa a ser no TEC-O3.",
+              "evidences": []
+            }
+          ]
+        },
+        {
+          "id": "O1K5",
+          "n": "KR5",
+          "title": "100% do time treinado e utilizando IA no ciclo de desenvolvimento",
+          "cadeira": "Head Tech",
+          "deadline": "2026-05-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "100% do time",
+          "baselineNote": "Documento diverge: título diz jun/26, meta diz mai/26 — adotado mai/26 (edite o prazo se a data oficial for jun)",
+          "metricBaseline": "",
+          "metricCurrent": "",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "PARA FECHAR ESTE RESULTADO: o que ele promete é o time USANDO IA, não o time presente em workshop. A prova de uso está em acr.lekto.com.br/admin/overview (adoção de revisão automática de código por pessoa). Anexe esse número como evidência e o resultado fecha em agosto.",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O1K5A1",
+              "title": "[DESCARTADA] Realizar workshops internos de IA por área",
+              "deadline": "2026-07-30",
+              "startedAt": "2026-04-22",
+              "concludedAt": "2026-08-05",
+              "description": "DESCARTADA em 05/08/2026, não excluída. Nunca foi feita por área: o processo iniciado foi de workshops internos gerais, incluindo IA, e acabou substituído pelo BIUD Talks. Registrar o motivo preserva o histórico da decisão em vez de apagar a iniciativa.\n\nTexto original: Iniciado o processo de workshops internos gerais, incluindo IA.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#biud-talks",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O1K5A2",
+              "title": "Compartilhar metodologias e melhores práticas entre o time",
+              "deadline": "2026-07-30",
+              "startedAt": "2026-04-22",
+              "concludedAt": "2026-07-05",
+              "description": "BIUD TALKs - Temas com foco em IA\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#biud-talks",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "texto",
+                  "value": "Contemplado nos BIUD Talks e alinhamentos técnicos internos.",
+                  "addedAt": "2026-08-05"
+                }
+              ]
+            },
+            {
+              "id": "O1K5A3",
+              "title": "Criar guia de ferramenta ideal para cada etapa do ciclo de desenvolvimento",
+              "deadline": null,
+              "startedAt": "2026-04-01",
+              "concludedAt": "2026-05-26",
+              "description": "Criação de estrutura de GSD e utilização de ACR - Code review automatizado, para o fluxo de desenvolvimento. \n\nCriamos um Guia de ferramenta para o fluxo de desenvolvimento a partir do modelo IA Fist. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://acr.lekto.com.br/admin/overview",
+                  "addedAt": "2026-06-24"
+                },
+                {
+                  "type": "link",
+                  "value": "https://github.com/biudtech/docs",
+                  "addedAt": "2026-06-24"
+                }
+              ]
+            },
+            {
+              "id": "O1K5A4",
+              "title": "Implementar TecWeek — apresentações internas de tecnologia",
+              "deadline": null,
+              "startedAt": "2026-04-22",
+              "concludedAt": "2026-04-22",
+              "description": "Implementação do BIUD TALKS",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://qa.biud.com.br/index.html#biud-talks",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            }
+          ]
         }
-       ]
-      }
-     ]
+      ]
     },
     {
-     "id": "O2K2",
-     "n": "KR2",
-     "title": "Manter zero vulnerabilidades críticas não corrigidas durante o ano",
-     "cadeira": "Head Tech + InfoSec",
-     "deadline": "2026-12-31",
-     "deadlineLabel": "vigência durante todo o ano, até",
-     "continuous": true,
-     "metricTarget": "0 críticas abertas",
-     "baselineNote": "",
-     "metricBaseline": "",
-     "metricCurrent": "0 críticas abertas",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "\n\n25/08/2026: vulnerabilidade crítica (BT-806) corrigida e encerrada conforme post-mortem aprovado e assinado pelo DPO. Zero críticas abertas.",
-     "evidences": [
-      {
-       "type": "link",
-       "value": "https://biudtecnologia.atlassian.net/wiki/x/AYAHB",
-       "addedAt": "2026-08-25"
-      }
-     ],
-     "acts": [
-      {
-       "id": "O2K2A1",
-       "title": "Definir critérios de privacidade no aceite de cada jornada refatorada (dado mínimo, base legal, retenção)",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": null,
-       "description": "Reescrita em 05/08/2026. Substitui 'Implementar conceito de Privacy by Design', que era conceito amplo e por isso nunca começou. Mantida após avaliação de descarte, por decisão do Head.\n\nMOTIVO DE MANTER: privacidade não é camada de segurança — é princípio de proteção de dados (LGPD Art. 46) e trata de qual dado se coleta, com que base legal e por quanto tempo se guarda. Revisão automática de código não responde nenhuma dessas três perguntas.\n\nCONTRAEVIDÊNCIA REGISTRADA: o BT-806 (endpoint público permitia trocar o telefone de qualquer CPF sem autenticação, com risco de tomada de conta) foi encontrado pela auditoria humana do BT-762, não pela revisão automática — em produção, em plataforma que processa CPF.\n\nAnda junto com a frente de LGPD, que é a única iniciativa deste resultado com evidência e dono ativo.",
-       "evidences": []
-      },
-      {
-       "id": "O2K2A2",
-       "title": "Criar frente de LGPD com regras de segurança",
-       "deadline": null,
-       "startedAt": "2026-05-01",
-       "concludedAt": null,
-       "description": "Iniciado o processo de continuidade à Política de Segurança de Informação com o Paulo (DPO). \nDocumentos encaminhados no dia 28/05 para validação\n",
-       "evidences": [
+      "id": "O2",
+      "code": "TEC-O2",
+      "title": "Garantir integridade, segurança e performance da plataforma",
+      "owner": "Gustavo (Head Tecnologia)",
+      "krs": [
         {
-         "type": "link",
-         "value": "https://docs.google.com/document/d/1Emw2H3be7b0TGtOq3eePKKhuCBkhoxA9/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
-         "addedAt": "2026-06-11"
+          "id": "O2K1",
+          "n": "KR1",
+          "title": "Manter disponibilidade da plataforma acima de 99,5% a partir de jun/2026",
+          "cadeira": "Head Tech + DevOps",
+          "deadline": "2026-06-30",
+          "deadlineLabel": "vigente a partir de",
+          "continuous": true,
+          "metricTarget": "≥ 99,5% uptime",
+          "baselineNote": "",
+          "metricBaseline": "99,5%",
+          "metricCurrent": "99,88%",
+          "compliance": "dentro",
+          "concludedAt": null,
+          "description": "Criado um painel de monitoramento com todos os itens e aplicações que estão ligadas direta ou indiretamente na plataforma, considerando todos os ambientes: \nDEV, HMG e PROD\n\n25/08/2026: 99,88% (Uptime Kuma) — acima da meta de 99,5%.",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://availability.biud.com.br/dashboard?",
+              "addedAt": "2026-06-11"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O2K1A1",
+              "title": "Garantir confiabilidade dos dados nas 3 esferas (interno, Sebrae, MPEs)",
+              "deadline": "2026-09-30",
+              "startedAt": "2026-06-01",
+              "concludedAt": null,
+              "description": "Projeto de Sanitização da base e Refatoração do banco",
+              "evidences": []
+            },
+            {
+              "id": "O2K1A2",
+              "title": "Implementar monitoramento de infra com alertas automatizados",
+              "deadline": null,
+              "startedAt": "2026-04-08",
+              "concludedAt": "2026-04-30",
+              "description": "Monitoramento de infra:\n\n- Geração de alertas diretamente integrada com o Discord - Canal oficial de comunicação do time de Tecnologia. ",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://availability.biud.com.br/dashboard",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O2K1A3",
+              "title": "Externalizar informações de infraestrutura para visibilidade",
+              "deadline": null,
+              "startedAt": "2026-04-30",
+              "concludedAt": "2026-06-11",
+              "description": "",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://availability.biud.com.br/dashboard",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O2K4A2",
+              "title": "Implementar monitoramento de latência (Up Time Kuma/DataDog)",
+              "deadline": null,
+              "startedAt": "2026-04-30",
+              "concludedAt": "2026-05-30",
+              "description": "Criação de dashboard de monitoramento incluindo notificações via Discord, WhatsApp e e-mail para o Guilherme Lima. \n\nMovida para este resultado em 05/08/2026, junto com a exclusão do resultado de páginas abaixo de 2 segundos. Monitoramento de latência pertence à mesma família de disponibilidade e infraestrutura, e a evidência fica preservada.",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://status.biud.com.br/dashboard",
+                  "addedAt": "2026-06-17"
+                }
+              ]
+            }
+          ]
         },
         {
-         "type": "link",
-         "value": "https://docs.google.com/document/d/1C1xdwI3H-Xk08Etd-oHzYFH_Zn3ptYiQ/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
-         "addedAt": "2026-06-11"
+          "id": "O2K2",
+          "n": "KR2",
+          "title": "Manter zero vulnerabilidades críticas não corrigidas durante o ano",
+          "cadeira": "Head Tech + InfoSec",
+          "deadline": "2026-12-31",
+          "deadlineLabel": "vigência durante todo o ano, até",
+          "continuous": true,
+          "metricTarget": "0 críticas abertas",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "0 críticas abertas",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "\n\n25/08/2026: vulnerabilidade crítica (BT-806) corrigida e encerrada conforme post-mortem aprovado e assinado pelo DPO. Zero críticas abertas.",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://biudtecnologia.atlassian.net/wiki/x/AYAHB",
+              "addedAt": "2026-08-25"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O2K2A1",
+              "title": "Definir critérios de privacidade no aceite de cada jornada refatorada (dado mínimo, base legal, retenção)",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "Reescrita em 05/08/2026. Substitui 'Implementar conceito de Privacy by Design', que era conceito amplo e por isso nunca começou. Mantida após avaliação de descarte, por decisão do Head.\n\nMOTIVO DE MANTER: privacidade não é camada de segurança — é princípio de proteção de dados (LGPD Art. 46) e trata de qual dado se coleta, com que base legal e por quanto tempo se guarda. Revisão automática de código não responde nenhuma dessas três perguntas.\n\nCONTRAEVIDÊNCIA REGISTRADA: o BT-806 (endpoint público permitia trocar o telefone de qualquer CPF sem autenticação, com risco de tomada de conta) foi encontrado pela auditoria humana do BT-762, não pela revisão automática — em produção, em plataforma que processa CPF.\n\nAnda junto com a frente de LGPD, que é a única iniciativa deste resultado com evidência e dono ativo.",
+              "evidences": []
+            },
+            {
+              "id": "O2K2A2",
+              "title": "Criar frente de LGPD com regras de segurança",
+              "deadline": null,
+              "startedAt": "2026-05-01",
+              "concludedAt": null,
+              "description": "Iniciado o processo de continuidade à Política de Segurança de Informação com o Paulo (DPO). \nDocumentos encaminhados no dia 28/05 para validação\n",
+              "evidences": [
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1Emw2H3be7b0TGtOq3eePKKhuCBkhoxA9/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1C1xdwI3H-Xk08Etd-oHzYFH_Zn3ptYiQ/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1ytW4gzfd8MuwdvyuoTK5xgh37BdntMYG/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                },
+                {
+                  "type": "link",
+                  "value": "https://docs.google.com/document/d/1ytW4gzfd8MuwdvyuoTK5xgh37BdntMYG/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
+                  "addedAt": "2026-06-11"
+                }
+              ]
+            },
+            {
+              "id": "O2K2A3",
+              "title": "Documentar playbook de segurança com matriz de decisão",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "",
+              "evidences": []
+            },
+            {
+              "id": "O2K2A4",
+              "title": "Executar testes sazonais de performance e segurança",
+              "deadline": null,
+              "startedAt": "2026-05-28",
+              "concludedAt": null,
+              "description": "Primeiro teste, após minha chegada, foi realizado no dia 28/05 para preparo de recebimendo de acessos em relação ao disparo do SEBRAE. \n\nSerá criado um cronograma de testes. ",
+              "evidences": []
+            }
+          ]
         },
         {
-         "type": "link",
-         "value": "https://docs.google.com/document/d/1ytW4gzfd8MuwdvyuoTK5xgh37BdntMYG/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
-         "addedAt": "2026-06-11"
-        },
-        {
-         "type": "link",
-         "value": "https://docs.google.com/document/d/1ytW4gzfd8MuwdvyuoTK5xgh37BdntMYG/edit?usp=drive_link&ouid=109151242171566476843&rtpof=true&sd=true",
-         "addedAt": "2026-06-11"
+          "id": "O2K3",
+          "n": "KR3",
+          "title": "Ter protocolo formal de gestão de incidentes documentado e ativo até mai/2026",
+          "cadeira": "Head Tech",
+          "deadline": "2026-05-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "Protocolo ativo",
+          "baselineNote": "",
+          "metricBaseline": "",
+          "metricCurrent": "Concluído",
+          "compliance": "sem",
+          "concludedAt": "2026-08-25",
+          "description": "\n\nCONCLUÍDO EM 25/08/2026. Evidência: Anexos I, II e III publicados no Confluence + post-mortem real do BT-806 aprovado e assinado pelo DPO.\n\nREGISTRO DE ALTERAÇÃO DE CRITÉRIO (25/08/2026): critério original exigia incidente simulado gerando post-mortem. Alterado para post-mortem de incidente real aprovado pelo DPO — evidência mais forte que simulação, por ser caso real que percorreu o protocolo completo, incluindo validação regulatória. Simulado movido para melhoria contínua, fora do escopo do KR.",
+          "evidences": [
+            {
+              "type": "link",
+              "value": "https://biudtecnologia.atlassian.net/wiki/x/AYAHB",
+              "addedAt": "2026-08-25"
+            }
+          ],
+          "acts": [
+            {
+              "id": "O2K3A1",
+              "title": "Definir fluxo de escalonamento por severidade",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": "2026-08-25",
+              "description": "\n\nPublicado no Confluence (página de governança) em 25/08/2026.",
+              "evidences": []
+            },
+            {
+              "id": "O2K3A2",
+              "title": "Documentar SLA interno por tipo de incidente",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": "2026-08-25",
+              "description": "\n\nPublicado no Confluence (página de governança) em 25/08/2026.",
+              "evidences": []
+            },
+            {
+              "id": "O2K3A3",
+              "title": "Implementar post-mortem obrigatório para incidentes P0/P1",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": "2026-08-25",
+              "description": "\n\nPublicado no Confluence (página de governança) em 25/08/2026.",
+              "evidences": []
+            }
+          ]
         }
-       ]
-      },
-      {
-       "id": "O2K2A3",
-       "title": "Documentar playbook de segurança com matriz de decisão",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": null,
-       "description": "",
-       "evidences": []
-      },
-      {
-       "id": "O2K2A4",
-       "title": "Executar testes sazonais de performance e segurança",
-       "deadline": null,
-       "startedAt": "2026-05-28",
-       "concludedAt": null,
-       "description": "Primeiro teste, após minha chegada, foi realizado no dia 28/05 para preparo de recebimendo de acessos em relação ao disparo do SEBRAE. \n\nSerá criado um cronograma de testes. ",
-       "evidences": []
-      }
-     ]
+      ]
     },
     {
-     "id": "O2K3",
-     "n": "KR3",
-     "title": "Ter protocolo formal de gestão de incidentes documentado e ativo até mai/2026",
-     "cadeira": "Head Tech",
-     "deadline": "2026-05-31",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "Protocolo ativo",
-     "baselineNote": "",
-     "metricBaseline": "",
-     "metricCurrent": "Concluído",
-     "compliance": "sem",
-     "concludedAt": "2026-08-25",
-     "description": "\n\nCONCLUÍDO EM 25/08/2026. Evidência: Anexos I, II e III publicados no Confluence + post-mortem real do BT-806 aprovado e assinado pelo DPO.\n\nREGISTRO DE ALTERAÇÃO DE CRITÉRIO (25/08/2026): critério original exigia incidente simulado gerando post-mortem. Alterado para post-mortem de incidente real aprovado pelo DPO — evidência mais forte que simulação, por ser caso real que percorreu o protocolo completo, incluindo validação regulatória. Simulado movido para melhoria contínua, fora do escopo do KR.",
-     "evidences": [
-      {
-       "type": "link",
-       "value": "https://biudtecnologia.atlassian.net/wiki/x/AYAHB",
-       "addedAt": "2026-08-25"
-      }
-     ],
-     "acts": [
-      {
-       "id": "O2K3A1",
-       "title": "Definir fluxo de escalonamento por severidade",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": "2026-08-25",
-       "description": "\n\nPublicado no Confluence (página de governança) em 25/08/2026.",
-       "evidences": []
-      },
-      {
-       "id": "O2K3A2",
-       "title": "Documentar SLA interno por tipo de incidente",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": "2026-08-25",
-       "description": "\n\nPublicado no Confluence (página de governança) em 25/08/2026.",
-       "evidences": []
-      },
-      {
-       "id": "O2K3A3",
-       "title": "Implementar post-mortem obrigatório para incidentes P0/P1",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": "2026-08-25",
-       "description": "\n\nPublicado no Confluence (página de governança) em 25/08/2026.",
-       "evidences": []
-      }
-     ]
+      "id": "O3",
+      "code": "TEC-O3",
+      "title": "Data & Analytics",
+      "owner": "Gustavo (Head Tecnologia)",
+      "krs": [
+        {
+          "id": "O3K1",
+          "n": "KR1",
+          "title": "Instrumentar e validar os indicadores críticos do produto",
+          "cadeira": "Head Tech + Dados",
+          "deadline": "2026-10-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "100% dos indicadores críticos validados",
+          "baselineNote": "A lista fechada de indicadores críticos é o denominador do KR e ainda não foi publicada (25/08/2026). Nada pode contar como formalmente validado antes dela.",
+          "metricBaseline": "0%",
+          "metricCurrent": "0%",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "A visão de indicadores hoje é feita por consulta manual ao banco, caso a caso. Sem evento instrumentado e validado, WAU, NTW e ativação são estimativas que variam conforme quem roda a consulta — divergência que já apareceu entre apresentações da mesma métrica. Este KR fecha essa lacuna.\n\nUm indicador só conta como validado com: (a) definição operacional escrita, (b) fonte de dados identificada, (c) implementação ativa em produção.\n\nATUALIZAÇÃO 25/08/2026: 2 dos 5 dashboards Power BI (relatórios recorrentes Sebrae) entregues — progresso de iniciativa, não do KR, enquanto a lista fechada não sai. Recomendação: prazo interno de publicação da lista até 05/09/2026 para não comprometer outubro.",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O3K1A1",
+              "title": "Publicar lista fechada de indicadores críticos com definição operacional, fonte de dados, regras de negócio e responsável técnico",
+              "deadline": "2026-09-05",
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "Pré-requisito de todo o KR: é o denominador. Em aberto em 25/08/2026. Prazo interno sugerido: 05/09/2026.",
+              "evidences": []
+            },
+            {
+              "id": "O3K1A2",
+              "title": "Disponibilizar dashboard no Power BI para os 5 principais relatórios recorrentes Sebrae",
+              "deadline": null,
+              "startedAt": "2026-08-12",
+              "concludedAt": null,
+              "description": "Em andamento — 2 de 5 relatórios entregues (25/08/2026).",
+              "evidences": []
+            },
+            {
+              "id": "O3K1A3",
+              "title": "Documentar indicadores e taxonomia de dados das jornadas refatoradas",
+              "deadline": null,
+              "startedAt": null,
+              "concludedAt": null,
+              "description": "Pendente (25/08/2026).",
+              "evidences": []
+            }
+          ]
+        },
+        {
+          "id": "O3K2",
+          "n": "KR2",
+          "title": "Reestruturação e sanitização do modelo de banco de dados e migração da arquitetura",
+          "cadeira": "Head Tech + Tech Lead + Dados",
+          "deadline": "2026-10-31",
+          "deadlineLabel": "até",
+          "continuous": false,
+          "metricTarget": "Base sanitizada, fonte de consulta unificada e arquitetura migrada com banco analítico ativo",
+          "baselineNote": "Estado em 25/08/2026: três frentes em andamento; migração é a mais avançada.",
+          "metricBaseline": "0%",
+          "metricCurrent": "Em andamento — Dev e HMG migradas; banco analítico em criação",
+          "compliance": "sem",
+          "concludedAt": null,
+          "description": "Garantir integridade, eficiência e escalabilidade dos dados por meio da reestruturação do modelo de banco, sanitização da base e migração para arquitetura moderna e sustentável.\n\nATUALIZAÇÃO 25/08/2026: migração de arquitetura bem avançada — ambientes Dev e HMG já migrados; criação do ambiente do banco analítico em andamento. Sanitização e unificação da fonte de consulta em andamento.\n\nATENÇÃO: dois KRs pesados (O3K1 e O3K2) com o mesmo prazo (out/2026) e cadeiras sobrepostas — risco de derrapagem conjunta.",
+          "evidences": [],
+          "acts": [
+            {
+              "id": "O3K2A1",
+              "title": "Projeto de sanitização da base de dados",
+              "deadline": null,
+              "startedAt": "2026-08-12",
+              "concludedAt": null,
+              "description": "Em andamento (25/08/2026).",
+              "evidences": []
+            },
+            {
+              "id": "O3K2A2",
+              "title": "Unificação da fonte de dados para consulta e geração de relatórios",
+              "deadline": null,
+              "startedAt": "2026-08-12",
+              "concludedAt": null,
+              "description": "Em andamento (25/08/2026).",
+              "evidences": []
+            },
+            {
+              "id": "O3K2A3",
+              "title": "Migração da arquitetura e criação de banco analítico",
+              "deadline": null,
+              "startedAt": "2026-08-12",
+              "concludedAt": null,
+              "description": "Em andamento — marco 25/08/2026: Dev e HMG migradas; ambiente do banco analítico em criação.",
+              "evidences": []
+            }
+          ]
+        }
+      ]
     }
-   ]
-  },
-  {
-   "id": "O3",
-   "code": "TEC-O3",
-   "title": "Data & Analytics",
-   "owner": "Gustavo (Head Tecnologia)",
-   "krs": [
-    {
-     "id": "O3K1",
-     "n": "KR1",
-     "title": "Instrumentar e validar os indicadores críticos do produto",
-     "cadeira": "Head Tech + Dados",
-     "deadline": "2026-10-31",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "100% dos indicadores críticos validados",
-     "baselineNote": "A lista fechada de indicadores críticos é o denominador do KR e ainda não foi publicada (25/08/2026). Nada pode contar como formalmente validado antes dela.",
-     "metricBaseline": "0%",
-     "metricCurrent": "0%",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "A visão de indicadores hoje é feita por consulta manual ao banco, caso a caso. Sem evento instrumentado e validado, WAU, NTW e ativação são estimativas que variam conforme quem roda a consulta — divergência que já apareceu entre apresentações da mesma métrica. Este KR fecha essa lacuna.\n\nUm indicador só conta como validado com: (a) definição operacional escrita, (b) fonte de dados identificada, (c) implementação ativa em produção.\n\nATUALIZAÇÃO 25/08/2026: 2 dos 5 dashboards Power BI (relatórios recorrentes Sebrae) entregues — progresso de iniciativa, não do KR, enquanto a lista fechada não sai. Recomendação: prazo interno de publicação da lista até 05/09/2026 para não comprometer outubro.",
-     "evidences": [],
-     "acts": [
-      {
-       "id": "O3K1A1",
-       "title": "Publicar lista fechada de indicadores críticos com definição operacional, fonte de dados, regras de negócio e responsável técnico",
-       "deadline": "2026-09-05",
-       "startedAt": null,
-       "concludedAt": null,
-       "description": "Pré-requisito de todo o KR: é o denominador. Em aberto em 25/08/2026. Prazo interno sugerido: 05/09/2026.",
-       "evidences": []
-      },
-      {
-       "id": "O3K1A2",
-       "title": "Disponibilizar dashboard no Power BI para os 5 principais relatórios recorrentes Sebrae",
-       "deadline": null,
-       "startedAt": "2026-08-12",
-       "concludedAt": null,
-       "description": "Em andamento — 2 de 5 relatórios entregues (25/08/2026).",
-       "evidences": []
-      },
-      {
-       "id": "O3K1A3",
-       "title": "Documentar indicadores e taxonomia de dados das jornadas refatoradas",
-       "deadline": null,
-       "startedAt": null,
-       "concludedAt": null,
-       "description": "Pendente (25/08/2026).",
-       "evidences": []
-      }
-     ]
-    },
-    {
-     "id": "O3K2",
-     "n": "KR2",
-     "title": "Reestruturação e sanitização do modelo de banco de dados e migração da arquitetura",
-     "cadeira": "Head Tech + Tech Lead + Dados",
-     "deadline": "2026-10-31",
-     "deadlineLabel": "até",
-     "continuous": false,
-     "metricTarget": "Base sanitizada, fonte de consulta unificada e arquitetura migrada com banco analítico ativo",
-     "baselineNote": "Estado em 25/08/2026: três frentes em andamento; migração é a mais avançada.",
-     "metricBaseline": "0%",
-     "metricCurrent": "Em andamento — Dev e HMG migradas; banco analítico em criação",
-     "compliance": "sem",
-     "concludedAt": null,
-     "description": "Garantir integridade, eficiência e escalabilidade dos dados por meio da reestruturação do modelo de banco, sanitização da base e migração para arquitetura moderna e sustentável.\n\nATUALIZAÇÃO 25/08/2026: migração de arquitetura bem avançada — ambientes Dev e HMG já migrados; criação do ambiente do banco analítico em andamento. Sanitização e unificação da fonte de consulta em andamento.\n\nATENÇÃO: dois KRs pesados (O3K1 e O3K2) com o mesmo prazo (out/2026) e cadeiras sobrepostas — risco de derrapagem conjunta.",
-     "evidences": [],
-     "acts": [
-      {
-       "id": "O3K2A1",
-       "title": "Projeto de sanitização da base de dados",
-       "deadline": null,
-       "startedAt": "2026-08-12",
-       "concludedAt": null,
-       "description": "Em andamento (25/08/2026).",
-       "evidences": []
-      },
-      {
-       "id": "O3K2A2",
-       "title": "Unificação da fonte de dados para consulta e geração de relatórios",
-       "deadline": null,
-       "startedAt": "2026-08-12",
-       "concludedAt": null,
-       "description": "Em andamento (25/08/2026).",
-       "evidences": []
-      },
-      {
-       "id": "O3K2A3",
-       "title": "Migração da arquitetura e criação de banco analítico",
-       "deadline": null,
-       "startedAt": "2026-08-12",
-       "concludedAt": null,
-       "description": "Em andamento — marco 25/08/2026: Dev e HMG migradas; ambiente do banco analítico em criação.",
-       "evidences": []
-      }
-     ]
-    }
-   ]
-  }
- ]
+  ]
 }
